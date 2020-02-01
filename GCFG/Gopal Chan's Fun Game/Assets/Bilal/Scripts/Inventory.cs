@@ -10,11 +10,11 @@ namespace bilalAdarsh
         public float currentWeight;
         public float maxWeight;
 
-        public void addItem(Item a)
+        public bool addItem(Item a)
         {
             if (currentWeight + a.weight > maxWeight)
             {
-                return;
+                return false;
             }
             currentWeight += a.weight;
             if (items.ContainsKey(a))
@@ -23,6 +23,7 @@ namespace bilalAdarsh
                 items.Add(a, 1);
 
             Debug.Log(a.resourceType);
+            return true;
         }
     
         Dictionary<Item,int> getInventory()
@@ -30,6 +31,13 @@ namespace bilalAdarsh
             return items;
         }
 
+        public void printItems()
+        {
+            foreach(KeyValuePair<Item,int> kvp in items)
+            {
+                Debug.Log(kvp.Key + " " + kvp.Value);
+            }
+        }
 
 
     }

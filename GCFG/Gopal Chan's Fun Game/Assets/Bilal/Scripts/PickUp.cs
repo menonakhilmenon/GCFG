@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Gopal;
 namespace bilalAdarsh
 {
     public class PickUp : MonoBehaviour
@@ -11,14 +12,8 @@ namespace bilalAdarsh
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Player")
-            {
-                GameObject player = other.gameObject;
-                Inventory i = player.GetComponent<Inventory>();
-                i.addItem(itemType);
-                Destroy(gameObject);
-                eventPickup?.Invoke();
-            }
+            other.GetComponent<Collector>()?.CollectItem?.Invoke(this);
+     
         }
       
     }
