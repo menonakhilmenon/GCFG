@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Gopal
 {
-    [CreateAssetMenu(menuName ="Gun")]
-    public class GunData : WeaponData
+    [CreateAssetMenu(menuName ="ProjectileWeapon")]
+    public class ProjectileData : WeaponData
     {
         public GameObject model;
         public int damage;
@@ -13,10 +13,11 @@ namespace Gopal
         public int reloadTime;
         public Bullet bullet;
 
-        public override void useWeapon()
+        public override void useWeapon(WeaponUser user)
         {
             Debug.Log("Thape Thape Thape");
-            Instantiate(bullet);
+            // Create a new bullet at the the instantiate point
+            Instantiate(bullet,user.projectileSpawnPoint.position,user.projectileSpawnPoint.rotation);
         }
     }
 }

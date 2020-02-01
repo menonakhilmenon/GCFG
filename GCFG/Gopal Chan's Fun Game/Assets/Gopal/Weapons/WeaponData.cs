@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using bilalAdarsh;
+
 namespace Gopal
 {
-    public abstract class WeaponData : ScriptableObject
+    public abstract class WeaponData : Item
     {
-        public abstract void useWeapon();
+        public abstract void useWeapon(WeaponUser user);
     }
 
 }
