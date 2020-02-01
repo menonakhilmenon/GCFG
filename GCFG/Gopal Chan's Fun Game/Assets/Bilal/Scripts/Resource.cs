@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace bilal
+namespace bilalAdarsh
 {
-
-    public class Resource : MonoBehaviour
+    [CreateAssetMenu(fileName = "New Resource", menuName = " Resource ")]
+    public class Resource : Item
     {
-        public Action onCollect;
-
-        private void OnTriggerEnter(Collider other)
-        {
-            gameObject.SetActive(false);
-            onCollect?.Invoke();
-        }
+        public Color color;
     }
 
 }
