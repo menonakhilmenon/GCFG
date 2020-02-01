@@ -14,7 +14,6 @@ namespace bilalAdarsh
         {
             if (currentWeight + a.weight > maxWeight)
             {
-                Debug.Log("Moonji !");
                 return;
             }
             currentWeight += a.weight;
@@ -25,7 +24,11 @@ namespace bilalAdarsh
 
             Debug.Log(a.resourceType);
         }
-
+    
+        Dictionary<Item,int> getInventory()
+        {
+            return items;
+        }
 
 
 
