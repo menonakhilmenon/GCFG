@@ -13,9 +13,10 @@ namespace GCFG
 
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
         [SerializeField]
-        private byte maxPlayersPerRoom = 4;
+        private byte maxPlayersPerRoom = 2;
 
         public static Action OnRoomJoinedCallback;
+        public static Action OnRoomFullCallback;
 
         string gameVersion = "1";
 
@@ -37,6 +38,7 @@ namespace GCFG
         /// </summary>
         public void Connect()
         {
+            NetworkLogger.Log("Waiting for Connection");
             // we check if we are connected or not, we join if we are , else we initiate the connection to the server.
             if (PhotonNetwork.IsConnected)
             {
@@ -54,12 +56,14 @@ namespace GCFG
 
         public override void OnConnectedToMaster()
         {
+            NetworkLogger.Log("Connected to Master");
             Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
             PhotonNetwork.JoinRandomRoom();
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
+            NetworkLogger.Log("Random Join Failed Creating Room");
             Debug.Log("PUN Basics Tutorial/Launcher:OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
 
             // #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
@@ -68,12 +72,29 @@ namespace GCFG
 
         public override void OnJoinedRoom()
         {
-            Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
+
+            if(PhotonNetwork.CurrentRoom.PlayerCount == maxPlayersPerRoom)
+            {
+                OnRoomFullCallback?.Invoke();
+            }
+            else
+            {
+                NetworkLogger.Log("Joined Room waiting for Room to fill");
+                Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
+            }
             OnRoomJoinedCallback?.Invoke();
+        }
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount == maxPlayersPerRoom)
+            {
+                OnRoomFullCallback?.Invoke();
+            }
         }
 
         public override void OnDisconnected(DisconnectCause cause)
         {
+            NetworkLogger.Log("Disconnected due to cause " + cause);
             Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
         }
 
