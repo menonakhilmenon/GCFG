@@ -2,29 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+namespace bilalAdarsh
 {
-    public Dictionary<Item, int> items = new Dictionary<Item, int>();
-    public float currentWeight;
-    public float maxWeight;
-
-    public void addItem(Item a)
+    public class Inventory : MonoBehaviour
     {
-        if (currentWeight + a.weight > maxWeight)
+        public Dictionary<Item, int> items = new Dictionary<Item, int>();
+        public float currentWeight;
+        public float maxWeight;
+
+        public void addItem(Item a)
         {
-            Debug.Log("Moonji !");
-            return;
+            if (currentWeight + a.weight > maxWeight)
+            {
+                Debug.Log("Moonji !");
+                return;
+            }
+            currentWeight += a.weight;
+            if (items.ContainsKey(a))
+                items[a]++;
+            else
+                items.Add(a, 1);
+
+            Debug.Log(a.resourceType);
         }
-        currentWeight += a.weight;
-        if (items.ContainsKey(a))
-            items[a]++;
-        else
-            items.Add(a,1);
 
-        Debug.Log(a.resourceType);
+
+
+
     }
-
-
-
-
 }
+

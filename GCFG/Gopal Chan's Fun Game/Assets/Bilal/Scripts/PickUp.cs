@@ -1,24 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PickUp : MonoBehaviour
+namespace bilalAdarsh
 {
-    public Resource r;
-
-    private void Start()
+    public class PickUp : MonoBehaviour
     {
-        gameObject.GetComponent<MeshRenderer>().material.color = r.color;
-    }
+        public Resource r;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
+        private void Start()
         {
-            GameObject player = other.gameObject;
-            Inventory i = player.GetComponent<Inventory>();
-            i.addItem(r);
-            Destroy(gameObject);
+            gameObject.GetComponent<MeshRenderer>().material.color = r.color;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                GameObject player = other.gameObject;
+                Inventory i = player.GetComponent<Inventory>();
+                i.addItem(r);
+                Destroy(gameObject);
+            }
         }
     }
 }
