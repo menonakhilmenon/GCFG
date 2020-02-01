@@ -16,6 +16,8 @@ using UnityEditor;
 using UnityEngine;
 
 using System.IO;
+using System.Text;
+using UnityEngine.Networking;
 
 
 namespace Photon.Pun
@@ -171,9 +173,9 @@ namespace Photon.Pun
 		public static bool IsPrefab(GameObject go)
 		{
             #if UNITY_2018_3_OR_NEWER
-				return UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetPrefabStage(go) != null || EditorUtility.IsPersistent(go);
+            return UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetPrefabStage(go) != null || EditorUtility.IsPersistent(go);
             #else
-                return EditorUtility.IsPersistent(go);
+            return EditorUtility.IsPersistent(go);
 			#endif
 		}
 
@@ -181,7 +183,7 @@ namespace Photon.Pun
         public static void StartCoroutine(System.Collections.IEnumerator update)
         {
             EditorApplication.CallbackFunction closureCallback = null;
- 
+
             closureCallback = () =>
             {
                 try
@@ -201,16 +203,29 @@ namespace Photon.Pun
             EditorApplication.update += closureCallback;
         }
         
-        public static System.Collections.IEnumerator HttpGet(string url, Action<string> successCallback, Action<string> errorCallback)
+        public static System.Collections.IEnumerator HttpPost(string url, Dictionary<string, string> headers, byte[] payload, Action<string> successCallback, Action<string> errorCallback)
         {
-            using (UnityEngine.Networking.UnityWebRequest w = UnityEngine.Networking.UnityWebRequest.Get(url))
+            using (UnityWebRequest w = new UnityWebRequest(url, "POST"))
             {
+                if (payload != null)
+                {
+                    w.uploadHandler = new UploadHandlerRaw(payload);
+                }
+                w.downloadHandler = new DownloadHandlerBuffer();
+                if (headers != null)
+                {
+                    foreach (var header in headers)
+                    {
+                        w.SetRequestHeader(header.Key, header.Value);
+                    }
+                }
+
                 #if UNITY_2017_2_OR_NEWER
                 yield return w.SendWebRequest();
                 #else
                 yield return w.Send();
                 #endif
- 
+
                 while (w.isDone == false)
                     yield return null;
 
