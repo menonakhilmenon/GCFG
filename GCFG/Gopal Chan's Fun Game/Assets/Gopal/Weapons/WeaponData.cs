@@ -6,7 +6,7 @@ namespace Gopal
 {
     public abstract class WeaponData : ScriptableObject
     {
-        public abstract void useWeapon();
+        public abstract void useWeapon(WeaponUser user);
     }
 
 }
