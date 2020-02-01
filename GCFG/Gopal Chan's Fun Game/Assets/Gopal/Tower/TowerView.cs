@@ -29,7 +29,7 @@ namespace Gopal
 
         }
 
-        void onProgressionUpdate(int value)
+        void onProgressionUpdate(float value)
         {
             Debug.Log("XXX");
             if(value >= lowerThreshold && value < upperThreshold)
