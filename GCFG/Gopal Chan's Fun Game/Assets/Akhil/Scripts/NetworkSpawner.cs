@@ -1,18 +1,34 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NetworkSpawner : MonoBehaviour
+namespace GCFG
 {
-    // Start is called before the first frame update
-    void Start()
+    public class NetworkSpawner : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private GameObject playerGameObject = null;
+        [SerializeField]
+        private Transform[] spawnPoints = null;
+        // Start is called before the first frame update
+        void Start()
+        {
+            Launcher.OnRoomFullCallback += SpawnPlayer;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void SpawnPlayer()
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                foreach (var player in PhotonNetwork.PlayerList)
+                {
+                    var pos = spawnPoints[player.ActorNumber % spawnPoints.Length];
+                    var obj = PhotonNetwork.Instantiate(playerGameObject.name, pos.position, pos.rotation);
+                    obj.GetComponent<PhotonView>().TransferOwnership(player);
+                }
+            }
+        }
     }
 }

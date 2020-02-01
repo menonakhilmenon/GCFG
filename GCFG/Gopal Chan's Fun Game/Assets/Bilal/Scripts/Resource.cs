@@ -7,6 +7,10 @@ namespace bilalAdarsh
     public class Resource : Item
     {
         public Color color;
+        void Start()
+        {
+            
+        }
     }
 
 }
