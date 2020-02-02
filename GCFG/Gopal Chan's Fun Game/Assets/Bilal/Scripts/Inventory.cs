@@ -26,7 +26,7 @@ namespace bilalAdarsh
             return true;
         }
     
-        Dictionary<Item,int> getInventory()
+        public Dictionary<Item,int> getInventory()
         {
             return items;
         }
@@ -56,6 +56,11 @@ namespace bilalAdarsh
                 return items[i];
             }
             return -1;
+        }
+
+        public void clear()
+        {
+            items.Clear();
         }
 
 

@@ -28,6 +28,13 @@ namespace Gopal
             };
             inventory.printItems();
         }
+
+        public Dictionary<Item,int> dumpInventory()
+        {
+            var res = inventory.getInventory();
+            inventory.clear();
+            return res;
+        }
     }
 
 }

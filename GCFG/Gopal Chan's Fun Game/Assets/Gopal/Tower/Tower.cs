@@ -35,6 +35,7 @@ namespace Gopal
 
         private void repairTower(Dictionary<Item,int> materials)
         {
+            Debug.Log("YYY");
             foreach (var item in materials)
             {
                 if(item.Key.resourceType == Item.Type.Gold)
@@ -52,7 +53,7 @@ namespace Gopal
 
         void Start()
         {
-            
+            gameObject.GetComponentInChildren<Repairable>().onRepairTower += repairTower;
         }
 
         // Update is called once per frame
