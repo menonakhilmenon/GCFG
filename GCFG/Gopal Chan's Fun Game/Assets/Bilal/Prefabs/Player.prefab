@@ -92,6 +92,9 @@ GameObject:
   - component: {fileID: 1902775094367844228}
   - component: {fileID: 1902775094367844229}
   - component: {fileID: 6978721704731607666}
+  - component: {fileID: 8152435497745251645}
+  - component: {fileID: 1069460497928074088}
+  - component: {fileID: 7956641047927309185}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -170,7 +173,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902775094367844252}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -241,4 +244,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32faedd9bfcd50c43a6b78fee9392b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canRepair: 0
   zone: {fileID: 0}
+--- !u!114 &8152435497745251645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902775094367844252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81525666c40f4c42afed1b75c4ecc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1069460497928074088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902775094367844252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc3780826092194aa719bfad658f004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7956641047927309185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902775094367844252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcd19c8dc0e7c64ab392ac0ebb60578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  weaponEquipped: 1
+  weapon: {fileID: 0}

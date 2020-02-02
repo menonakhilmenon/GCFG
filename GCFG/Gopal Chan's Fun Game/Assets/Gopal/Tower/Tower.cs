@@ -10,6 +10,7 @@ namespace Gopal
         private float progression = 0;
         public Action<float> TowerSpawn;
         public Action<float> TowerProgressionUpdate;
+        private float damageFactor = 1f;
         private float goldWeight = 5f;
         private float stoneWeight = 3f;
         private float woodWeight = 1f;
@@ -31,8 +32,13 @@ namespace Gopal
         private void OnEnable()
         {
             TowerSpawn?.Invoke(progression);
+            gameObject.GetComponent<Damageable>().onTakeDamage += damageController;
         }
 
+        private void damageController(int damage)
+        {
+            Progression -= damageFactor * damage;
+        }
         private void repairTower(Dictionary<Item,int> materials)
         {
             Debug.Log("YYY");

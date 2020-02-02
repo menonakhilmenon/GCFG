@@ -17,7 +17,7 @@ namespace Gopal
         {
             Debug.Log("Thape Thape Thape");
             // Create a new bullet at the the instantiate point
-            Instantiate(bullet,user.projectileSpawnPoint.position,user.projectileSpawnPoint.rotation);
+            Instantiate(bullet,user.spawnPoint.position,user.spawnPoint.rotation);
         }
     }
 }
