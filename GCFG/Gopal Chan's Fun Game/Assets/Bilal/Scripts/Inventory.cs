@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static bilalAdarsh.Item;
 
 namespace bilalAdarsh
 {
@@ -25,8 +26,20 @@ namespace bilalAdarsh
             Debug.Log(a.resourceType);
             return true;
         }
-    
-        Dictionary<Item,int> getInventory()
+        
+        public int getResourceCount(Type itemType)
+        {
+            foreach(var kvp in items)
+            {
+                if(kvp.Key.resourceType == itemType)
+                {
+                    return kvp.Value;
+                }
+            }
+            return 0;
+        }
+
+        public Dictionary<Item,int> getInventory()
         {
             return items;
         }
@@ -56,6 +69,11 @@ namespace bilalAdarsh
                 return items[i];
             }
             return -1;
+        }
+
+        public void clear()
+        {
+            items.Clear();
         }
 
 

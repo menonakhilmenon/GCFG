@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using bilalAdarsh;
+using static bilalAdarsh.Item;
 
 namespace Gopal
 {
@@ -27,6 +28,49 @@ namespace Gopal
                 Destroy(i.gameObject);
             };
             inventory.printItems();
+        }
+
+        public Dictionary<Item,int> dumpInventory()
+        {
+            var res = inventory.getInventory();
+            inventory.clear();
+            return res;
+        }
+
+        public Dictionary<Type,int> dumpResources()
+        {
+            Dictionary<Type, int> returnValues = new Dictionary<Type, int>();
+            int goldCount = inventory.getResourceCount(Type.Gold);
+            int stoneCount = inventory.getResourceCount(Type.Stone);
+            int woodCount = inventory.getResourceCount(Type.Wood);
+
+            returnValues.Add(Type.Gold, goldCount);
+            returnValues.Add(Type.Stone, stoneCount);
+            returnValues.Add(Type.Wood, woodCount);
+
+            removeResourceSpecific(Type.Gold, goldCount);
+            removeResourceSpecific(Type.Stone, stoneCount);
+            removeResourceSpecific(Type.Wood, woodCount);
+
+            return returnValues;
+        }
+
+        public bool removeResourceSpecific(Type resourceType,int resourceCount)
+        {
+            int availableResourceCount = inventory.getResourceCount(resourceType);
+            if(availableResourceCount >= resourceCount)
+            {
+                foreach (var item in inventory.items.Keys)
+                {
+                    if(item.resourceType == resourceType)
+                    {
+                        inventory.items[item] -= resourceCount;
+                        inventory.currentWeight -= item.weight * resourceCount;
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 
