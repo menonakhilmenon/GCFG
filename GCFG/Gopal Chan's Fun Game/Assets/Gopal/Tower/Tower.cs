@@ -24,7 +24,7 @@ namespace Gopal
                     progression = value;
                     TowerProgressionUpdate(value);
                 }
-                Debug.Log(progression);
+                Debug.Log("Progression :"+progression);
             }
         }
 
@@ -33,18 +33,18 @@ namespace Gopal
             TowerSpawn?.Invoke(progression);
         }
 
-        private void repairTower(Dictionary<Item,int> materials)
+        private void repairTower(Dictionary<Item.Type,int> materials)
         {
             Debug.Log("YYY");
             foreach (var item in materials)
             {
-                if(item.Key.resourceType == Item.Type.Gold)
+                if(item.Key == Item.Type.Gold)
                 {
                     Progression += goldWeight * item.Value;
-                }else if(item.Key.resourceType == Item.Type.Stone)
+                }else if(item.Key == Item.Type.Stone)
                 {
                     Progression += stoneWeight * item.Value;
-                }else if(item.Key.resourceType == Item.Type.Wood)
+                }else if(item.Key == Item.Type.Wood)
                 {
                     Progression += woodWeight * item.Value;
                 }
