@@ -39,6 +39,25 @@ namespace bilalAdarsh
             }
         }
 
+        public bool removeItem(Item i,int count)
+        {
+            if(items.ContainsKey(i) && items[i] >= count)
+            {
+                items[i] -= count;
+                return true;
+            }
+            return false;
+        }
+
+        public int returnItemCount(Item i)
+        {
+            if(items.ContainsKey(i))
+            {
+                return items[i];
+            }
+            return -1;
+        }
+
 
     }
 }
