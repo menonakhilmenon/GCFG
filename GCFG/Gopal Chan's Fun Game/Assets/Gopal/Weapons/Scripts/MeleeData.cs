@@ -21,7 +21,7 @@ namespace Gopal
             // Damage each enemy
             foreach(Collider enemy in hitEnemies)
             {
-                enemy.GetComponent<Damageable>()?.onTakeDamage?.Invoke(damage);
+                enemy.GetComponent<Damageable>()?.OnTakeDamage?.Invoke(damage);
             }
         }
     }

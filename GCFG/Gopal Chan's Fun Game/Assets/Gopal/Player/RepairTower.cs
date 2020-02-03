@@ -10,7 +10,8 @@ namespace Gopal
     {
         public bool canRepair = false;
         private Dictionary<Item.Type, int> items = new Dictionary<Item.Type, int>();
-        public Repairable zone;
+        public Repairable zone = null;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<Repairable>() != null)
@@ -26,6 +27,7 @@ namespace Gopal
             if (other.GetComponent<Repairable>() != null)
             {
                 canRepair = false;
+                zone = null;
                 items.Clear();
             }
         }
@@ -37,13 +39,8 @@ namespace Gopal
                 canRepair = true;
             }
         }
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
 
-        // Update is called once per frame
         void Update()
         {
             if (canRepair)
@@ -51,8 +48,11 @@ namespace Gopal
                 if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F))
                 {
                     Debug.Log("XXX");
-                    items = gameObject.GetComponent<InventoryManager>()?.dumpResources();
-                    zone?.onRepairTower?.Invoke(items);
+                    items = gameObject.GetComponent<InventoryManager>()?.DumpResources();
+                    if (zone != null)
+                    {
+                        zone.OnRepair?.Invoke(items);
+                    }
                 }
             }
         }

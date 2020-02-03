@@ -37,7 +37,7 @@ namespace Gopal
             return res;
         }
 
-        public Dictionary<Type,int> dumpResources()
+        public Dictionary<Type,int> DumpResources()
         {
             Dictionary<Type, int> returnValues = new Dictionary<Type, int>();
             int goldCount = inventory.getResourceCount(Type.Gold);
@@ -48,14 +48,14 @@ namespace Gopal
             returnValues.Add(Type.Stone, stoneCount);
             returnValues.Add(Type.Wood, woodCount);
 
-            removeResourceSpecific(Type.Gold, goldCount);
-            removeResourceSpecific(Type.Stone, stoneCount);
-            removeResourceSpecific(Type.Wood, woodCount);
+            RemoveResourceSpecific(Type.Gold, goldCount);
+            RemoveResourceSpecific(Type.Stone, stoneCount);
+            RemoveResourceSpecific(Type.Wood, woodCount);
 
             return returnValues;
         }
 
-        public bool removeResourceSpecific(Type resourceType,int resourceCount)
+        public bool RemoveResourceSpecific(Type resourceType,int resourceCount)
         {
             int availableResourceCount = inventory.getResourceCount(resourceType);
             if(availableResourceCount >= resourceCount)

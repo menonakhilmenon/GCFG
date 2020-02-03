@@ -16,7 +16,7 @@ namespace Gopal
 
         private void OnTriggerEnter(Collider other)
         {
-            other.GetComponent<Damageable>()?.onTakeDamage?.Invoke(damage);
+            other.GetComponent<Damageable>()?.OnTakeDamage?.Invoke(damage);
             gameObject.SetActive(false);
         }
     }

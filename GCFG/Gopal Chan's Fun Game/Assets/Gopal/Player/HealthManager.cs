@@ -28,7 +28,7 @@ namespace Gopal
         private float damageFactor = 1f;
         private void OnEnable()
         {
-            gameObject.GetComponent<Damageable>().onTakeDamage += takeDamage;
+            gameObject.GetComponent<Damageable>().OnTakeDamage += takeDamage;
         }
         // Start is called before the first frame update
         void Start()
