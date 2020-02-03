@@ -8,16 +8,14 @@ namespace GCFG
     [RequireComponent(typeof(PhotonView),typeof(CharacterController))]
     public class PlayerMotor : MonoBehaviour
     {
-        private PhotonView view;
         private CharacterController characterController;
 
-        public float lookSmoothing = 5f;
-
+        public float mouseSensitivity = 5f;
+        public float speed = 5f;
 
         private void OnEnable()
         {
             characterController = GetComponent<CharacterController>();
-            view = GetComponent<PhotonView>();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -25,7 +23,10 @@ namespace GCFG
         private void Update()
         {
             var rot = Input.GetAxis("Mouse X");
-            transform.eulerAngles += (Vector3.up * lookSmoothing * rot * Time.deltaTime);
+            var motion = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+            transform.eulerAngles += (Vector3.up * mouseSensitivity * rot * Time.deltaTime);
+
+            characterController.Move(motion * speed);
         }
 
     }

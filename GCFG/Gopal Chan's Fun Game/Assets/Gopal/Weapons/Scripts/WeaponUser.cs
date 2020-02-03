@@ -10,14 +10,14 @@ namespace Gopal
         public Transform spawnPoint;
         public bool weaponEquipped = true;
         public WeaponData weapon;
-        public Action<WeaponData> EquipWeapon;
+        public Action<WeaponData> onEquippedWeapon;
 
         private void Start()
         {
-            EquipWeapon += onEquipWeapon;
+            onEquippedWeapon += EquipWeapon;
         }
 
-        public void onEquipWeapon(WeaponData newWeapon)
+        public void EquipWeapon(WeaponData newWeapon)
         {
             weapon = newWeapon;
             weaponEquipped = true;

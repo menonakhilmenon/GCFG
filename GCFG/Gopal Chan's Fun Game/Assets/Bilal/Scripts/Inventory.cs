@@ -1,17 +1,28 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using static bilalAdarsh.Item;
 
 namespace bilalAdarsh
 {
-    public class Inventory : MonoBehaviour
+    [RequireComponent(typeof(PhotonView))]
+    public class Inventory : MonoBehaviourPun
     {
         public Dictionary<Item, int> items = new Dictionary<Item, int>();
         public float currentWeight;
         public float maxWeight;
 
-        public bool addItem(Item a)
+        private void Start()
+        {
+            if (photonView.IsMine) 
+            {
+                PlayerManager.instance.LocalPlayerInventory = this;
+            }
+        }
+
+
+        public bool AddItem(Item a)
         {
             if (currentWeight + a.weight > maxWeight)
             {
@@ -27,7 +38,7 @@ namespace bilalAdarsh
             return true;
         }
         
-        public int getResourceCount(Type itemType)
+        public int GetResourceCount(Item.Type itemType)
         {
             foreach(var kvp in items)
             {
@@ -39,12 +50,12 @@ namespace bilalAdarsh
             return 0;
         }
 
-        public Dictionary<Item,int> getInventory()
+        public Dictionary<Item,int> GetInventory()
         {
             return items;
         }
 
-        public void printItems()
+        public void PrintItems()
         {
             foreach(KeyValuePair<Item,int> kvp in items)
             {
@@ -52,7 +63,7 @@ namespace bilalAdarsh
             }
         }
 
-        public bool removeItem(Item i,int count)
+        public bool RemoveItem(Item i,int count)
         {
             if(items.ContainsKey(i) && items[i] >= count)
             {
@@ -62,7 +73,7 @@ namespace bilalAdarsh
             return false;
         }
 
-        public int returnItemCount(Item i)
+        public int ReturnItemCount(Item i)
         {
             if(items.ContainsKey(i))
             {
@@ -71,7 +82,7 @@ namespace bilalAdarsh
             return -1;
         }
 
-        public void clear()
+        public void Clear()
         {
             items.Clear();
         }

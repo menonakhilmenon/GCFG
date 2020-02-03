@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Gopal
 {
+    [RequireComponent(typeof(Damageable))]
     public class HealthManager : MonoBehaviour
     {
         public float health = 100;
@@ -28,13 +29,9 @@ namespace Gopal
         private float damageFactor = 1f;
         private void OnEnable()
         {
-            gameObject.GetComponent<Damageable>().OnTakeDamage += takeDamage;
+            GetComponent<Damageable>().OnTakeDamage += takeDamage;
         }
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
 
         void takeDamage(int damage)
         {

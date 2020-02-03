@@ -11,8 +11,14 @@ namespace GCFG
         [SerializeField]
         private GameObject playerGameObject = null;
         [SerializeField]
-        private Transform[] spawnPoints = null;
-        // Start is called before the first frame update
+        private GameObject towerGameObject = null;
+
+
+        [SerializeField]
+        private Transform[] playerSpawnPoints = null;
+        [SerializeField]
+        private Transform[] towerSpawnPoints = null;
+
 
         public void SpawnPlayer()
         {
@@ -25,8 +31,13 @@ namespace GCFG
         private void SpawnRPC()
         {
             var player = PhotonNetwork.LocalPlayer;
-            var pos = spawnPoints[player.ActorNumber % spawnPoints.Length];
-            PhotonNetwork.Instantiate(playerGameObject.name, pos.position, pos.rotation);
+            var index = player.ActorNumber % playerSpawnPoints.Length;
+            var playerPos = playerSpawnPoints[index];
+            var towerPos = towerSpawnPoints[index];
+
+
+            PhotonNetwork.Instantiate(playerGameObject.name, playerPos.position, playerPos.rotation);
+            PhotonNetwork.Instantiate(towerGameObject.name, towerPos.position, towerPos.rotation);
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using bilalAdarsh;
+using Photon.Pun;
+
 namespace Gopal
 {
     public class Tower : MonoBehaviour
@@ -10,7 +12,7 @@ namespace Gopal
         [Header("Repair and Progression")]
 
         [SerializeField]
-        private Repairable repairable;
+        private Repairable repairable = null;
         [SerializeField]
         private float damageFactor = 1f;
         [SerializeField]
@@ -44,9 +46,10 @@ namespace Gopal
                         TowerProgressionComplete?.Invoke();
                     }
                 }
-                Debug.Log("Progression : "+_progression);
             }
         }
+
+
 
         private void OnEnable()
         {
@@ -55,13 +58,6 @@ namespace Gopal
             gameObject.GetComponent<Damageable>().OnTakeDamage += TakeDamage;
         }
 
-        //void Update()
-        //{
-        //    if (Input.GetMouseButtonDown(0))
-        //    {
-        //        Progression++;
-        //    }
-        //}
 
         public void TakeDamage(int damage)
         {
@@ -70,7 +66,6 @@ namespace Gopal
 
         private void RepairTower(Dictionary<Item.Type,int> materials)
         {
-            Debug.Log("YYY");
             foreach (var item in materials)
             {
                 if(item.Key == Item.Type.Gold)

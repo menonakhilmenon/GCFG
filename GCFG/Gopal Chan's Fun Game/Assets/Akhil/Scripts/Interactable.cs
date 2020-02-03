@@ -7,11 +7,11 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     [SerializeField]
-    private UnityEvent<Interactor> OnInteractionStart;
+    private UnityEvent<Interactor> OnInteractionStart = null;
     [SerializeField]
-    private UnityEvent<Interactor> OnInteract;
+    private UnityEvent<Interactor> OnInteract = null;
     [SerializeField]
-    private UnityEvent<Interactor> OnInteractionEnd;
+    private UnityEvent<Interactor> OnInteractionEnd = null;
 
     private void OnTriggerEnter(Collider other)
     {

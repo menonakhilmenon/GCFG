@@ -32,5 +32,7 @@ MonoBehaviour:
   - ClickRpc
   - DestroyRpc
   - SpawnRPC
+  - RegisterTower
+  - UpdateTowerHealthRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

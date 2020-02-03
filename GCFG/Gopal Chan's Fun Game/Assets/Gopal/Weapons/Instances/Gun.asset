@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 0
   weight: 0
-  model: {fileID: 6685083415227175233, guid: 85dd44c64c669fd4a94b790bf0a3e207, type: 3}
+  model: {fileID: 4549253047795267139, guid: 85dd44c64c669fd4a94b790bf0a3e207, type: 3}
   damage: 0
   range: 0
   reloadTime: 0
