@@ -11,22 +11,43 @@ namespace GCFG
         private CharacterController characterController;
 
         public float mouseSensitivity = 5f;
-        public float speed = 5f;
+        [SerializeField]
+        private float speed = 5f;
+        [SerializeField]
+        private float jumpSpeed = 8;
+  
+        private float vSpeed = 0f;
 
         private void OnEnable()
         {
             characterController = GetComponent<CharacterController>();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            
         }
+
+       
 
         private void Update()
         {
-            var rot = Input.GetAxis("Mouse X");
-            var motion = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-            transform.eulerAngles += (Vector3.up * mouseSensitivity * rot * Time.deltaTime);
+            var motion = Vector3.zero;
+            if (!PlayerEventGenerator.isFreeLooking) 
+            {
+                var rot = Input.GetAxis("Mouse X");
+                transform.eulerAngles += (Vector3.up * mouseSensitivity * rot * Time.deltaTime);
 
-            characterController.Move(motion * speed);
+
+                motion += Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+            }
+            if (characterController.isGrounded) 
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    vSpeed = jumpSpeed;
+                }
+            }
+            vSpeed += Physics.gravity.y * Time.deltaTime;
+            motion.y = vSpeed;
+
+            characterController.Move(motion * speed * Time.deltaTime);
         }
 
     }

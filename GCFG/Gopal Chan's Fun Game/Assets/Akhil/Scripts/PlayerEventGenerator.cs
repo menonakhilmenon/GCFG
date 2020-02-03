@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerEventGenerator : MonoBehaviour
 {
-    public static Action InteractEvent = null;
-    public static Action FreeLookBeginEvent = null;
-    public static Action FreeLookEndEvent = null;
-    public static Action FireEvent = null;
-    public static Action AltFireEvent = null;
+    public ScriptableGameEvent InteractEvent = null;
+    public ScriptableGameEvent FreeLookBeginEvent = null;
+    public ScriptableGameEvent FreeLookEndEvent = null;
+    public ScriptableGameEvent FireEvent = null;
+    public ScriptableGameEvent AltFireEvent = null;
 
 
     [SerializeField]
@@ -18,39 +18,78 @@ public class PlayerEventGenerator : MonoBehaviour
     private KeyCode FreeLookKey = KeyCode.LeftAlt;
 
 
-    private bool isFreeLooking = false;
+    private static bool _fullFreeLook = true;
+
+    public static bool isFreeLooking = false;
+    public bool isFullFreeLook
+    {
+        get => _fullFreeLook;
+        set
+        {
+            if (_fullFreeLook != value)
+            {
+                _fullFreeLook = value;
+                if (value == false)
+                {
+                    LockCursor();
+                }
+                else 
+                {
+                    ReleaseCursor();
+                }
+            }
+        }
+    }
+
 
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isFreeLooking) 
+        if (Input.GetMouseButtonDown(0) && !isFreeLooking)
         {
-            if (!Input.GetMouseButton(1)) 
+            if (!Input.GetMouseButton(1))
             {
                 FireEvent?.Invoke();
             }
-            else 
+            else
             {
                 AltFireEvent?.Invoke();
             }
         }
 
-        if (Input.GetKeyDown(FreeLookKey)) 
-        {
-            FreeLookBeginEvent?.Invoke();
-        }
-        isFreeLooking = Input.GetKey(FreeLookKey);
 
-        if (Input.GetKeyUp(FreeLookKey)) 
+        if (!isFullFreeLook)
         {
-            FreeLookEndEvent?.Invoke();
-        }
+            if (Input.GetKeyDown(FreeLookKey))
+            {
+                FreeLookBeginEvent?.Invoke();
+                ReleaseCursor();
+            }
+            isFreeLooking = Input.GetKey(FreeLookKey);
 
-        if(!isFreeLooking && Input.GetKeyDown(InteractKey)) 
+            if (Input.GetKeyUp(FreeLookKey))
+            {
+                FreeLookEndEvent?.Invoke();
+                LockCursor();
+            }
+        }
+        if (!isFreeLooking && Input.GetKeyDown(InteractKey))
         {
             InteractEvent?.Invoke();
         }
+    }
 
+    private static void ReleaseCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public static void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
     }
+
 }
