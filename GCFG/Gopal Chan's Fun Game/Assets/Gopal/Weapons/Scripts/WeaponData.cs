@@ -8,6 +8,7 @@ namespace Gopal
 {
     public abstract class WeaponData : Item
     {
+        public float weaponCooldown = 0.5f;
         public abstract void useWeapon(WeaponUser user);
     }
 

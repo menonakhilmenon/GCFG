@@ -9,15 +9,14 @@ namespace Gopal
         public int damage = 5;
         public float speed = 5f;
 
-        private void OnEnable()
-        {
-            GetComponent<Rigidbody>().velocity = transform.forward * speed;
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             other.GetComponent<Damageable>()?.OnTakeDamage?.Invoke(damage);
             Destroy(gameObject);
+        }
+        private void Update()
+        {
+            transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
 

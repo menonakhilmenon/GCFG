@@ -50,7 +50,7 @@ Canvas:
   m_GameObject: {fileID: 3531751563888128616}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 5268634552131423148}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -60,7 +60,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &7821785406739637550
 MonoBehaviour:
@@ -147,6 +147,98 @@ MonoBehaviour:
       - m_Target: {fileID: 4063041340584587759}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &3913993872270305832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5727638110304621859}
+  - component: {fileID: 8843406902042096795}
+  - component: {fileID: 158192056625419912}
+  - component: {fileID: 5255846698155286454}
+  m_Layer: 0
+  m_Name: Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5727638110304621859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913993872270305832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5268634550227767825}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8843406902042096795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913993872270305832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccfda5a5da6d5f3448afc74a66c3cda3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 5268634550227767829}
+  interactionCamera: {fileID: 5268634552131423148}
+  interactionRange: 5
+  interactionLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!136 &158192056625419912
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913993872270305832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5255846698155286454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913993872270305832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876ff4778f3eca14cbda44f9a1f74e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 82e9f8b2c3c088d4488cdb16b9b532ab, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8843406902042096795}
+        m_MethodName: Interact
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -358,7 +450,6 @@ GameObject:
   - component: {fileID: 5268634550227767825}
   - component: {fileID: 5268634550227767824}
   - component: {fileID: 5268634550227767839}
-  - component: {fileID: 5268634550227767838}
   - component: {fileID: 5268634550227767837}
   - component: {fileID: 5268634550227767829}
   - component: {fileID: 5268634550227767828}
@@ -388,6 +479,7 @@ Transform:
   - {fileID: 5268634550705152526}
   - {fileID: 8619241691844980027}
   - {fileID: 8861029109421718047}
+  - {fileID: 5727638110304621859}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -438,20 +530,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &5268634550227767838
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5268634550227767836}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &5268634550227767837
 CharacterController:
   m_ObjectHideFlags: 0
@@ -538,6 +616,7 @@ MonoBehaviour:
   - {fileID: 5268634550227767828}
   - {fileID: 5268634550705152525}
   - {fileID: 3531751563888128616}
+  - {fileID: 3913993872270305832}
 --- !u!114 &147842807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +716,7 @@ GameObject:
   - component: {fileID: 5268634552131423149}
   - component: {fileID: 5268634552131423148}
   - component: {fileID: 5268634552131423147}
+  - component: {fileID: 7658070667737979910}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -689,7 +769,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 3639
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -709,6 +789,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5268634552131423146}
   m_Enabled: 1
+--- !u!114 &7658070667737979910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268634552131423146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af75027a0401bdb479801a5b7996f464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSetEvent: {fileID: 11400000, guid: 024bfe1c719b8e3409f64aa62fe58e67, type: 2}
+  photonView: {fileID: 5268634550227767829}
 --- !u!1 &5638803304249051556
 GameObject:
   m_ObjectHideFlags: 0

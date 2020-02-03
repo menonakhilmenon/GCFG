@@ -6,12 +6,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class Interactable : MonoBehaviour
 {
+
     [SerializeField]
-    private UnityEvent<Interactor> OnInteractionStart = null;
+    private InteractorEvent OnInteractionStart = null;
     [SerializeField]
-    private UnityEvent<Interactor> OnInteract = null;
+    private InteractorEvent OnInteract = null;
     [SerializeField]
-    private UnityEvent<Interactor> OnInteractionEnd = null;
+    private InteractorEvent OnInteractionEnd = null;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,17 +23,31 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    public void StartInteraction(Interactor other)
+    {
+        if (other != null)
+        {
+            OnInteractionStart?.Invoke(other);
+        }
+    }
+    public void EndInteraction(Interactor other)
+    {
+        if (other != null)
+        {
+            OnInteractionEnd?.Invoke(other);
+        }
+    }
+
     public void Interact(Interactor interactor) 
     {
         OnInteract?.Invoke(interactor);
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        var interactor = other.GetComponent<Interactor>();
-        if (interactor != null)
-        {
-            OnInteractionEnd?.Invoke(interactor);
-        }
-    }
+
+}
+
+[System.Serializable]
+public class InteractorEvent : UnityEvent<Interactor> 
+{
+
 }
