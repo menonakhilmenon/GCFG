@@ -8,7 +8,7 @@ namespace Gopal
 {
     public class Repairable : MonoBehaviour
     {
-        public Action<Dictionary<Item, int>> onRepairTower;
+        public Action<Dictionary<Item.Type, int>> onRepairTower;
     }
 
 }

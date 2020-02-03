@@ -9,7 +9,7 @@ namespace Gopal
     public class RepairTower : MonoBehaviour
     {
         public bool canRepair = false;
-        private Dictionary<Item, int> items = new Dictionary<Item, int>();
+        private Dictionary<Item.Type, int> items = new Dictionary<Item.Type, int>();
         public Repairable zone;
         private void OnTriggerEnter(Collider other)
         {
@@ -51,7 +51,7 @@ namespace Gopal
                 if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F))
                 {
                     Debug.Log("XXX");
-                    items = gameObject.GetComponent<InventoryManager>()?.inventory.getInventory();
+                    items = gameObject.GetComponent<InventoryManager>()?.dumpResources();
                     zone?.onRepairTower?.Invoke(items);
                 }
             }

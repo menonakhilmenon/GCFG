@@ -13,6 +13,7 @@ namespace Gopal
         private float goldWeight = 5f;
         private float stoneWeight = 3f;
         private float woodWeight = 1f;
+        private float damageFactor;
 
         public float Progression
         {
@@ -24,27 +25,33 @@ namespace Gopal
                     progression = value;
                     TowerProgressionUpdate(value);
                 }
-                Debug.Log(progression);
+                Debug.Log("Progression :"+progression);
             }
         }
 
         private void OnEnable()
         {
             TowerSpawn?.Invoke(progression);
+            gameObject.GetComponent<Damageable>().onTakeDamage += takeDamage;
         }
 
-        private void repairTower(Dictionary<Item,int> materials)
+        public void takeDamage(int damage)
+        {
+            Progression -= damageFactor * damage;
+        }
+
+        private void repairTower(Dictionary<Item.Type,int> materials)
         {
             Debug.Log("YYY");
             foreach (var item in materials)
             {
-                if(item.Key.resourceType == Item.Type.Gold)
+                if(item.Key == Item.Type.Gold)
                 {
                     Progression += goldWeight * item.Value;
-                }else if(item.Key.resourceType == Item.Type.Stone)
+                }else if(item.Key == Item.Type.Stone)
                 {
                     Progression += stoneWeight * item.Value;
-                }else if(item.Key.resourceType == Item.Type.Wood)
+                }else if(item.Key == Item.Type.Wood)
                 {
                     Progression += woodWeight * item.Value;
                 }

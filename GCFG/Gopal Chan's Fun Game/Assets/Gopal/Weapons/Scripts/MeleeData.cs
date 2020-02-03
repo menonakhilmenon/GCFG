@@ -16,12 +16,12 @@ namespace Gopal
             Debug.Log("Splish Slash, Your Opinion is Trash");
 
             // Get all enemies in range of the sword
-            Collider[] hitEnemies = Physics.OverlapSphere(user.meleeSpawnPoint.position,range);
+            Collider[] hitEnemies = Physics.OverlapSphere(user.spawnPoint.position,range);
             
             // Damage each enemy
             foreach(Collider enemy in hitEnemies)
             {
-                enemy.GetComponent<Damageable>()?.takeDamage?.Invoke(damage);
+                enemy.GetComponent<Damageable>()?.onTakeDamage?.Invoke(damage);
             }
         }
     }
