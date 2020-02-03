@@ -7,9 +7,9 @@ namespace GCFG
     public class GameStartCanvas : MonoBehaviour
     {
         [SerializeField]
-        private GameObject[] gameObjectsToDisableOnJoined;
+        private GameObject[] gameObjectsToDisableOnJoined = null;
         [SerializeField]
-        private GameObject[] gameObjectsToDisableOnRoomFull;
+        private GameObject[] gameObjectsToDisableOnRoomFull= null;
         // Start is called before the first frame update
         void OnEnable()
         {

@@ -18,8 +18,12 @@ namespace GCFG
         public static Action OnRoomJoinedCallback;
         public static Action OnRoomFullCallback;
 
-        string gameVersion = "1";
 
+        private bool connectToRandomRoom = true;
+        private bool exposeRoom = true;
+
+
+        public string roomID { get; set; }
 
 
         void Awake()
@@ -29,6 +33,19 @@ namespace GCFG
 
 
         #region Public Methods
+
+
+
+        public void ConnectToRoom() 
+        {
+            exposeRoom = false;
+            Connect();
+        }
+        public void JoinRoom(string roomID) 
+        {
+            connectToRandomRoom = false;
+            Connect();
+        }
 
 
         /// <summary>
@@ -43,31 +60,51 @@ namespace GCFG
             if (PhotonNetwork.IsConnected)
             {
                 // #Critical we need at this point to attempt joining a Random Room. If it fails, we'll get notified in OnJoinRandomFailed() and we'll create one.
-                PhotonNetwork.JoinRandomRoom();
+                if (connectToRandomRoom) 
+                {
+                    PhotonNetwork.JoinRandomRoom();
+                }
+                else 
+                {
+                    PhotonNetwork.JoinRoom(roomID);
+                }
             }
             else
             {
                 // #Critical, we must first and foremost connect to Photon Online Server.
                 PhotonNetwork.ConnectUsingSettings();
-                PhotonNetwork.GameVersion = gameVersion;
             }
         }
+
 
 
         public override void OnConnectedToMaster()
         {
             NetworkLogger.Log("Connected to Master");
             Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
-            PhotonNetwork.JoinRandomRoom();
+            if (connectToRandomRoom) 
+            {
+                PhotonNetwork.JoinRandomRoom();
+            }
+            else 
+            {
+                PhotonNetwork.JoinRoom(roomID);
+            }
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
             NetworkLogger.Log("Random Join Failed Creating Room");
-            Debug.Log("PUN Basics Tutorial/Launcher:OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
 
             // #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
-            PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+            if (exposeRoom) 
+            {
+                PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+            }
+            else 
+            {
+                PhotonNetwork.CreateRoom("Test", new RoomOptions { IsVisible = false, MaxPlayers = maxPlayersPerRoom });
+            }
         }
 
         public override void OnJoinedRoom()
@@ -76,19 +113,23 @@ namespace GCFG
             if(PhotonNetwork.CurrentRoom.PlayerCount == maxPlayersPerRoom)
             {
                 OnRoomFullCallback?.Invoke();
+                Debug.Log("Room full!");
             }
             else
             {
-                NetworkLogger.Log("Joined Room waiting for Room to fill");
+                NetworkLogger.Log($"Room ID : {PhotonNetwork.CurrentRoom.Name}");
                 Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
             }
+
             OnRoomJoinedCallback?.Invoke();
         }
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
+            Debug.Log("Player entered room " + newPlayer.NickName);
             if (PhotonNetwork.CurrentRoom.PlayerCount == maxPlayersPerRoom)
             {
                 OnRoomFullCallback?.Invoke();
+                Debug.Log("Room full!");
             }
         }
 

@@ -13,22 +13,20 @@ namespace GCFG
         [SerializeField]
         private Transform[] spawnPoints = null;
         // Start is called before the first frame update
-        void Start()
+
+        public void SpawnPlayer()
         {
-            Launcher.OnRoomFullCallback += SpawnPlayer;
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+            GetComponent<PhotonView>().RPC(nameof(SpawnRPC), RpcTarget.AllBuffered);
         }
 
-        private void SpawnPlayer()
+        [PunRPC]
+        private void SpawnRPC()
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                foreach (var player in PhotonNetwork.PlayerList)
-                {
-                    var pos = spawnPoints[player.ActorNumber % spawnPoints.Length];
-                    var obj = PhotonNetwork.Instantiate(playerGameObject.name, pos.position, pos.rotation);
-                    obj.GetComponent<PhotonView>().TransferOwnership(player);
-                }
-            }
+            var player = PhotonNetwork.LocalPlayer;
+            var pos = spawnPoints[player.ActorNumber % spawnPoints.Length];
+            PhotonNetwork.Instantiate(playerGameObject.name, pos.position, pos.rotation);
         }
     }
 }
