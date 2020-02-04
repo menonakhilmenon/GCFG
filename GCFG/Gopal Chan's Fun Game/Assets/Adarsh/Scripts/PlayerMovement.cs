@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, -Input.GetAxis("Vertical"));
+        //moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, -Input.GetAxis("Vertical"));
+            moveDirection = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
             moveDirection *= speed;
         // moveDirection.y -= gravity * Time.deltaTime;
             var rot = Input.GetAxis("Mouse X");
