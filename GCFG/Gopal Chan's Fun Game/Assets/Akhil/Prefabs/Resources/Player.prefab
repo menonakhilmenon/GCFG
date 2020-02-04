@@ -616,6 +616,8 @@ GameObject:
   - component: {fileID: 147842807}
   - component: {fileID: 147842806}
   - component: {fileID: 7449449033766533051}
+  - component: {fileID: 2971934692624162259}
+  - component: {fileID: 4333060444502335450}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -816,6 +818,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &2971934692624162259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268634550227767836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9ac3ce7720bb344b73954b976b7fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeight: 0
+  maxWeight: 0
+--- !u!114 &4333060444502335450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268634550227767836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396d90c59e2a8d459bb6b602333c3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: {fileID: 11400000, guid: f563c1de44d81144abfa9ff5fe02ad6a, type: 2}
+  stone: {fileID: 11400000, guid: 365113fb924dbf74ba296c2ccaea5263, type: 2}
+  wood: {fileID: 11400000, guid: 307150db1a1fa864bac4632c86d158d0, type: 2}
+  inventory: {fileID: 2971934692624162259}
 --- !u!1 &5268634550705152525
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,8 +893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraSensitivityY: 5
-  cameraLowerAngle: -90
-  cameraUpperAngle: 15
+  cameraLowerAngle: -89
+  cameraUpperAngle: 89
 --- !u!1 &5268634552131423146
 GameObject:
   m_ObjectHideFlags: 0

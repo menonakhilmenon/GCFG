@@ -38,5 +38,6 @@ MonoBehaviour:
   - EquipWeaponRPC
   - UnEquipWeaponRPC
   - ItemPickUpRPC
+  - SpawnPickupRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

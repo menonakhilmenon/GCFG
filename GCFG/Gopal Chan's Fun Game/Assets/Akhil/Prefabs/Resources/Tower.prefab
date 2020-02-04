@@ -46727,8 +46727,11 @@ MonoBehaviour:
   damageFactor: 1
   progressionToWin: 100
   goldWeight: 5
+  goldResource: {fileID: 0}
   stoneWeight: 3
+  stoneResource: {fileID: 0}
   woodWeight: 1
+  woodResource: {fileID: 0}
 --- !u!114 &8090040667885950753
 MonoBehaviour:
   m_ObjectHideFlags: 0
