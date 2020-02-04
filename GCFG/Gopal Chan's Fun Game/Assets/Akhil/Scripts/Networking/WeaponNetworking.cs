@@ -4,29 +4,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(WeaponUser))]
-public class WeaponNetworking : MonoBehaviour
+namespace GCFG
 {
-    [SerializeField]
-    private PhotonView photonView = null;
-    private WeaponUser weaponUser = null;
 
-    private void Awake()
+    [RequireComponent(typeof(WeaponUser))]
+    [RequireComponent(typeof(PhotonView))]
+    public class WeaponNetworking : MonoBehaviourPun
     {
-        weaponUser = GetComponent<WeaponUser>();
-    }
 
-    public void NetworkUseWeapon() 
-    {
-        if (weaponUser.TryUseWeapon()) 
+        private WeaponUser weaponUser = null;
+
+        [SerializeField]
+        private PhotonObjects photonObjectSettings = null;
+
+
+        private void Awake()
         {
-            photonView.RPC(nameof(UseWeaponRPC), RpcTarget.AllViaServer);
+            weaponUser = GetComponent<WeaponUser>();
         }
-    }
 
-    [PunRPC]
-    private void UseWeaponRPC() 
-    {
-        weaponUser.UseWeapon();
+        public void NetworkUseWeapon()
+        {
+            if (weaponUser.TryUseWeapon())
+            {
+                photonView.RPC(nameof(UseWeaponRPC), RpcTarget.AllViaServer);
+            }
+        }
+
+        public void NetworkEquipWeapon(Weapon weaponData)
+        {
+            if(weaponData != null) 
+            {
+                photonView.RPC(nameof(EquipWeaponRPC), RpcTarget.AllBufferedViaServer, photonObjectSettings.GetIndex(weaponData));
+            }
+            else 
+            {
+                photonView.RPC(nameof(UnEquipWeaponRPC), RpcTarget.AllBufferedViaServer);
+            }
+        }
+
+        [PunRPC]
+        private void EquipWeaponRPC(int weaponIndex)
+        {
+            weaponUser.EquipWeapon(photonObjectSettings.GetObject(weaponIndex) as Weapon);
+        }
+        [PunRPC]
+        private void UnEquipWeaponRPC() 
+        {
+            weaponUser.UnEquipWeapon();
+        }
+        [PunRPC]
+        private void UseWeaponRPC()
+        {
+            weaponUser.UseWeapon();
+        }
     }
 }

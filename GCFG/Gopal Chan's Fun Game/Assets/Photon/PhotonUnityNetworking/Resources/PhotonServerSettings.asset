@@ -35,5 +35,8 @@ MonoBehaviour:
   - RegisterTower
   - UpdateTowerHealthRPC
   - UseWeaponRPC
+  - EquipWeaponRPC
+  - UnEquipWeaponRPC
+  - ItemPickUpRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

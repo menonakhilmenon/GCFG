@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using bilalAdarsh;
 using Photon.Pun;
+using NaughtyAttributes;
 
 namespace Gopal
 {
+
+
     public class Tower : MonoBehaviour
     {
         [Header("Repair and Progression")]
@@ -20,13 +23,33 @@ namespace Gopal
 
         private float _progression = 0;
 
-        [Header("Craft Values")]
+
+        [BoxGroup("Gold")]
         [SerializeField]
         private float goldWeight = 5f;
+        [BoxGroup("Gold")]
+        [SerializeField]
+        private Resource goldResource;
+
+        [BoxGroup("Stone")]
         [SerializeField]
         private float stoneWeight = 3f;
         [SerializeField]
+        [BoxGroup("Stone")]
+        private Resource stoneResource = null;
+
+        [BoxGroup("Wood")]
+        [SerializeField]
         private float woodWeight = 1f;
+        [SerializeField]
+        [BoxGroup("Wood")]
+        private Resource woodResource;
+
+
+
+
+
+
 
         public Action<float> TowerSpawn;
         public Action<float> TowerProgressionUpdate;
@@ -64,20 +87,20 @@ namespace Gopal
             Progression -= damageFactor * damage;
         }
 
-        private void RepairTower(Dictionary<Item.Type,int> materials)
+        private void RepairTower(Dictionary<Item,int> materials)
         {
             foreach (var item in materials)
             {
-                if(item.Key == Item.Type.Gold)
-                {
-                    Progression += goldWeight * item.Value;
-                }else if(item.Key == Item.Type.Stone)
-                {
-                    Progression += stoneWeight * item.Value;
-                }else if(item.Key == Item.Type.Wood)
-                {
-                    Progression += woodWeight * item.Value;
-                }
+                //if(item.Key == Item.Type.Gold)
+                //{
+                //    Progression += goldWeight * item.Value;
+                //}else if(item.Key == Item.Type.Stone)
+                //{
+                //    Progression += stoneWeight * item.Value;
+                //}else if(item.Key == Item.Type.Wood)
+                //{
+                //    Progression += woodWeight * item.Value;
+                //}
             }
         }
     }

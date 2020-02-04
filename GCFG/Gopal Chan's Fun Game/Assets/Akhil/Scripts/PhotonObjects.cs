@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ using UnityEngine;
 public class PhotonObjects : ScriptableObject
 {
     [SerializeField]
+    [ReorderableList]
     private List<Object> photonObjects = null;
 
     public int GetIndex(Object obj) 
@@ -23,7 +25,7 @@ public class PhotonObjects : ScriptableObject
     {
         if(0<=index && index < photonObjects.Count)
             return photonObjects[index];
-        Debug.LogError($"Index out of bounds..");
+        Debug.LogError("Index out of bounds..");
         return null;
     }
 }

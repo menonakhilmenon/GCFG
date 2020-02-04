@@ -7,7 +7,7 @@ using System;
 public class WeaponContainer : MonoBehaviour
 {
     [SerializeField]
-    private WeaponData weapon = null;
+    private Weapon weapon = null;
     [SerializeField]
     private WeaponUser user = null;
 

@@ -6,8 +6,14 @@ namespace bilalAdarsh
 { 
     public class Item : ScriptableObject
     {
-        public enum Type { Wood, Stone, Gold, Weapon };
-        public Type resourceType;
+        [Tooltip("The model of the gameobject when the item is dropped")]
+        public GameObject dropModel = null;
+        [Tooltip("The weight of the item when carrying around in inventory")]
         public float weight;
+
+        public virtual void UseItem() 
+        {
+        
+        }
     }
 }

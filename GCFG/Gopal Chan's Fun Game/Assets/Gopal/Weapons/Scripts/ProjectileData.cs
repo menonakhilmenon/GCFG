@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Gopal
 {
     [CreateAssetMenu(menuName ="ProjectileWeapon")]
-    public class ProjectileData : WeaponData
+    public class ProjectileData : Weapon
     {
         public GameObject model;
         public int damage;
