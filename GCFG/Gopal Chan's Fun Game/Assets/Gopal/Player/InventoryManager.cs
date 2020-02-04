@@ -8,6 +8,13 @@ namespace Gopal
 {
     public class InventoryManager : MonoBehaviour
     {
+        [SerializeField]
+        private Resource gold = null;
+        [SerializeField]
+        private Resource stone = null;
+        [SerializeField]
+        private Resource wood = null;
+
         public Inventory inventory;
         // Start is called before the first frame update
         void Start()
@@ -37,32 +44,32 @@ namespace Gopal
             return res;
         }
 
-        public Dictionary<Type,int> DumpResources()
+        public Dictionary<Item,int> DumpResources()
         {
-            Dictionary<Type, int> returnValues = new Dictionary<Type, int>();
-            int goldCount = inventory.GetResourceCount(Type.Gold);
-            int stoneCount = inventory.GetResourceCount(Type.Stone);
-            int woodCount = inventory.GetResourceCount(Type.Wood);
+            Dictionary<Item, int> returnValues = new Dictionary<Item, int>();
+            int goldCount = inventory.GetResourceCount(gold);
+            int stoneCount = inventory.GetResourceCount(stone);
+            int woodCount = inventory.GetResourceCount(wood);
 
-            returnValues.Add(Type.Gold, goldCount);
-            returnValues.Add(Type.Stone, stoneCount);
-            returnValues.Add(Type.Wood, woodCount);
+            returnValues.Add(gold, goldCount);
+            returnValues.Add(stone, stoneCount);
+            returnValues.Add(wood, woodCount);
 
-            RemoveResourceSpecific(Type.Gold, goldCount);
-            RemoveResourceSpecific(Type.Stone, stoneCount);
-            RemoveResourceSpecific(Type.Wood, woodCount);
+            RemoveResourceSpecific(gold, goldCount);
+            RemoveResourceSpecific(stone, stoneCount);
+            RemoveResourceSpecific(wood, woodCount);
 
             return returnValues;
         }
 
-        public bool RemoveResourceSpecific(Type resourceType,int resourceCount)
+        public bool RemoveResourceSpecific(Item resourceType,int resourceCount)
         {
             int availableResourceCount = inventory.GetResourceCount(resourceType);
             if(availableResourceCount >= resourceCount)
             {
                 foreach (var item in inventory.items.Keys)
                 {
-                    if(item.resourceType == resourceType)
+                    if(item == resourceType)
                     {
                         inventory.items[item] -= resourceCount;
                         inventory.currentWeight -= item.weight * resourceCount;

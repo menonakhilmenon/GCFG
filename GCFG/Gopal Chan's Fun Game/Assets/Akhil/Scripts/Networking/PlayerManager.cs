@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 
 
     public Inventory LocalPlayerInventory { get; set; } = null;
+    public WeaponUser LocalWeaponUser { get; set; } = null;
     public Tower LocalTower { get; set; } = null;
     public PhotonView LocalPlayerView { get; set; } = null;
 

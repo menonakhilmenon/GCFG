@@ -9,7 +9,7 @@ namespace Gopal
     public class RepairTower : MonoBehaviour
     {
         public bool canRepair = false;
-        private Dictionary<Item.Type, int> items = new Dictionary<Item.Type, int>();
+        private Dictionary<Item, int> items = new Dictionary<Item, int>();
         public Repairable zone = null;
 
         private void OnTriggerEnter(Collider other)

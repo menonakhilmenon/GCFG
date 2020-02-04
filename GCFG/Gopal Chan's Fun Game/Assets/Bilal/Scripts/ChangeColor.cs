@@ -8,10 +8,7 @@ namespace bilalAdarsh
     {
         // Start is called before the first frame update
         public Resource resourceType;
-        void Start()
-        {
-            gameObject.GetComponent<MeshRenderer>().material.color = resourceType.color;
-        }
+
 
 
     }

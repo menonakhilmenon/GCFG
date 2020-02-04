@@ -34,15 +34,32 @@ namespace bilalAdarsh
             else
                 items.Add(a, 1);
 
-            Debug.Log(a.resourceType);
             return true;
         }
-        
-        public int GetResourceCount(Item.Type itemType)
+
+        public bool TryAdd(Item a)
+        {
+            if (currentWeight + a.weight > maxWeight)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool TryAdd(Item a,int count)
+        {
+            if (currentWeight + a.weight * count > maxWeight)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public int GetResourceCount(Item itemType)
         {
             foreach(var kvp in items)
             {
-                if(kvp.Key.resourceType == itemType)
+                if(kvp.Key == itemType)
                 {
                     return kvp.Value;
                 }
