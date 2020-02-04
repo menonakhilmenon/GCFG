@@ -12,6 +12,22 @@ public class PickupSpawner : MonoBehaviourPun
     [SerializeField]
     private PhotonObjects photonObjects = null;
 
+
+    public static PickupSpawner instance = null;
+
+    private void Awake()
+    {
+        if(instance == null) 
+        {
+            instance = this;
+        }
+        else 
+        {
+            Destroy(this);
+        }
+    }
+
+
     [Button("Spawn Shit")]
     public void SpawnAtOrigin() 
     {

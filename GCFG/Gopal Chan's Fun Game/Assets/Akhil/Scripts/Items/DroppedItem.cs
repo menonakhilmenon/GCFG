@@ -7,15 +7,26 @@ using UnityEngine;
 namespace GCFG
 {
     [RequireComponent(typeof(PhotonView))]
-    public class DroppedItem : MonoBehaviourPun,IPunObservable
+    public class DroppedItem : MonoBehaviourPun, IPunObservable
     {
         [SerializeField]
         private Item itemType = null;
         [SerializeField]
         private int _count = 1;
+        [SerializeField]
+        private bool showCount = false;
+
         public int Count { get => _count; set => _count = value; }
 
         private int lastSentCount = 1;
+
+        public string GetDisplayText() 
+        {
+            if(!showCount)
+                return itemType.name;
+            return $"{itemType.name} x{Count}";
+        }
+
 
         public void NetworkPickUp() 
         {
