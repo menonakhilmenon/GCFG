@@ -10,7 +10,7 @@ namespace Gopal
     public class HealthManager : MonoBehaviour
     {
         public float health = 100;
-        public Action<float> HealthUpdate;
+        public FloatEvent HealthUpdate;
         public float Health
         {
             get

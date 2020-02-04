@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6383804638818540924
+--- !u!1001 &3943499679631954820
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemType
       value: 
-      objectReference: {fileID: 11400000, guid: 365113fb924dbf74ba296c2ccaea5263,
+      objectReference: {fileID: 11400000, guid: 307150db1a1fa864bac4632c86d158d0,
         type: 2}
     - target: {fileID: 4937482073099799203, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
@@ -21,22 +21,22 @@ PrefabInstance:
     - target: {fileID: 4937482073099799207, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
       propertyPath: m_Name
-      value: BaseDrop Variant
+      value: WoodDrop Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4937482073099799213, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.83
+      value: -27.113777
       objectReference: {fileID: 0}
     - target: {fileID: 4937482073099799213, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.74
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: 4937482073099799213, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.53
+      value: 34.58
       objectReference: {fileID: 0}
     - target: {fileID: 4937482073099799213, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
@@ -82,7 +82,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1dd7e29cd49a6204f985f00fa608c0b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 7f00a50bbbd2e7d4489edf6640ea40e5, type: 2}
     - target: {fileID: 7388191849921429311, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
       propertyPath: m_textInfo.characterCount

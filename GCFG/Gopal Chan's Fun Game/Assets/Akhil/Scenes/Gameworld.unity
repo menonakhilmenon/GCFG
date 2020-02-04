@@ -11279,6 +11279,10 @@ MonoBehaviour:
   repairItems:
   - resource: {fileID: 11400000, guid: f563c1de44d81144abfa9ff5fe02ad6a, type: 2}
     weight: 5
+  - resource: {fileID: 11400000, guid: 365113fb924dbf74ba296c2ccaea5263, type: 2}
+    weight: 2
+  - resource: {fileID: 11400000, guid: 307150db1a1fa864bac4632c86d158d0, type: 2}
+    weight: 1
 --- !u!43 &824266180
 Mesh:
   m_ObjectHideFlags: 0

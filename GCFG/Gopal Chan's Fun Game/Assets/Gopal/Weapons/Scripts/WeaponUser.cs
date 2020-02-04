@@ -8,9 +8,6 @@ namespace Gopal
 {
     public class WeaponUser : MonoBehaviour
     {
-        [SerializeField]
-        private PhotonView photonView = null;
-
         public Transform spawnPoint;
         public bool weaponEquipped = true;
         public Weapon weapon;

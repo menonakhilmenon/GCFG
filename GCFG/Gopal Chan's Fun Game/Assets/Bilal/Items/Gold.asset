@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8132fef243e9448a428a30bcf51045, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
-  resourceType: 2
+  dropModel: {fileID: 8541500547448893679, guid: 0c613c8c3c0b1d041bc416e87b43badf,
+    type: 3}
   weight: 3
-  color: {r: 0.93333334, g: 0.8575107, b: 0.0588235, a: 0}
