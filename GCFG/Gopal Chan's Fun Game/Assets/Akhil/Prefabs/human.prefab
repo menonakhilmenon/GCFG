@@ -2087,6 +2087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   tilt: 5
+  mouseSensitivity: 5
 --- !u!114 &8367259421265738656
 MonoBehaviour:
   m_ObjectHideFlags: 0
