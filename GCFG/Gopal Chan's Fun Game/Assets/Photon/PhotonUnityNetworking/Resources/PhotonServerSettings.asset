@@ -39,5 +39,7 @@ MonoBehaviour:
   - UnEquipWeaponRPC
   - ItemPickUpRPC
   - SpawnPickupRPC
+  - TakeDamageRequest
+  - TakeDamageRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

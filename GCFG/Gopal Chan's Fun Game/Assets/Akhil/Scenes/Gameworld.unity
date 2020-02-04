@@ -1709,7 +1709,6 @@ GameObject:
   m_Component:
   - component: {fileID: 82074447}
   - component: {fileID: 82074448}
-  - component: {fileID: 82074449}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -1741,18 +1740,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca3b36ff1bae9544da268d0d52586bcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &82074449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82074446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b500877d48a2a254cacf9ba466436c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &85487180
@@ -11134,6 +11121,7 @@ GameObject:
   - component: {fileID: 823329302}
   - component: {fileID: 823329301}
   - component: {fileID: 823329305}
+  - component: {fileID: 823329306}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -11273,6 +11261,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &823329306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823329300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50026dc9358e6ca49a64380772394a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onRepair:
+    m_PersistentCalls:
+      m_Calls: []
+  repairItems:
+  - resource: {fileID: 11400000, guid: f563c1de44d81144abfa9ff5fe02ad6a, type: 2}
+    weight: 5
 --- !u!43 &824266180
 Mesh:
   m_ObjectHideFlags: 0
