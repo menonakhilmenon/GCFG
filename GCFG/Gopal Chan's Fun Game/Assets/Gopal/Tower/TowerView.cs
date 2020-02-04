@@ -9,9 +9,9 @@ namespace Gopal
         public Tower parent;
         public GameObject child;
         [SerializeField]
-        private int lowerThreshold;
+        private int lowerThreshold = 0;
         [SerializeField]
-        private int upperThreshold;
+        private int upperThreshold = 100;
 
         private void OnEnable()
         {

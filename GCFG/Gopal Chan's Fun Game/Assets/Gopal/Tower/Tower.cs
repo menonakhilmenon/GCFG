@@ -3,39 +3,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using bilalAdarsh;
+using Photon.Pun;
+
 namespace Gopal
 {
     public class Tower : MonoBehaviour
     {
-        private float progression = 0;
+        [Header("Repair and Progression")]
+
+        [SerializeField]
+        private Repairable repairable = null;
+        [SerializeField]
+        private float damageFactor = 1f;
+        [SerializeField]
+        private float progressionToWin = 100f;
+
+        private float _progression = 0;
+
+        [Header("Craft Values")]
+        [SerializeField]
+        private float goldWeight = 5f;
+        [SerializeField]
+        private float stoneWeight = 3f;
+        [SerializeField]
+        private float woodWeight = 1f;
+
         public Action<float> TowerSpawn;
         public Action<float> TowerProgressionUpdate;
-        private float goldWeight = 5f;
-        private float stoneWeight = 3f;
-        private float woodWeight = 1f;
+        public Action TowerProgressionComplete;
 
         public float Progression
         {
-            get { return progression; }
+            get { return _progression; }
             set
             {
-                if (progression != value)
+                if (_progression != value)
                 {
-                    progression = value;
+                    _progression = value;
                     TowerProgressionUpdate(value);
+                    if(_progression >= progressionToWin) 
+                    {
+                        TowerProgressionComplete?.Invoke();
+                    }
                 }
-                Debug.Log("Progression :"+progression);
             }
         }
 
+
+
         private void OnEnable()
         {
-            TowerSpawn?.Invoke(progression);
+            repairable.OnRepair += RepairTower;
+            TowerSpawn?.Invoke(_progression);
+            gameObject.GetComponent<Damageable>().OnTakeDamage += TakeDamage;
         }
 
-        private void repairTower(Dictionary<Item.Type,int> materials)
+
+        public void TakeDamage(int damage)
         {
-            Debug.Log("YYY");
+            Progression -= damageFactor * damage;
+        }
+
+        private void RepairTower(Dictionary<Item.Type,int> materials)
+        {
             foreach (var item in materials)
             {
                 if(item.Key == Item.Type.Gold)
@@ -48,20 +78,6 @@ namespace Gopal
                 {
                     Progression += woodWeight * item.Value;
                 }
-            }
-        }
-
-        void Start()
-        {
-            gameObject.GetComponentInChildren<Repairable>().onRepairTower += repairTower;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Progression++;
             }
         }
     }

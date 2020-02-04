@@ -321,7 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6875848994588138509}
   - component: {fileID: -2579587486735496242}
-  - component: {fileID: 43234161340597235}
+  - component: {fileID: 3724431645923336067}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -359,7 +359,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964d051c87369f7459aa17dc8178199d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &43234161340597235
+  repairable: {fileID: 5936131565685661525}
+  goldWeight: 5
+  stoneWeight: 3
+  woodWeight: 1
+--- !u!114 &3724431645923336067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,19 +372,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6875848994588138498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Script: {fileID: 11500000, guid: f81525666c40f4c42afed1b75c4ecc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 0
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &8157383413263230736
 GameObject:
   m_ObjectHideFlags: 0

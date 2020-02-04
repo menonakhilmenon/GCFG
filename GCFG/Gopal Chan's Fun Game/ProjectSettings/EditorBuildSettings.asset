@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Akhil/Scenes/Launcher.unity
-    guid: 67bf6e30b53e9654f86d31dd21b9da7c
+    path: Assets/Akhil/Scenes/Gameworld.unity
+    guid: 800ba7350b5fdd54da00b85eb589b593
   m_configObjects: {}

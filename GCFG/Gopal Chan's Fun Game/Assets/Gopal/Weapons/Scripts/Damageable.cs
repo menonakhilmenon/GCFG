@@ -7,6 +7,6 @@ namespace Gopal
 {
     public class Damageable : MonoBehaviour
     {
-        public Action<int> takeDamage;
+        public Action<int> OnTakeDamage;
     }
 }

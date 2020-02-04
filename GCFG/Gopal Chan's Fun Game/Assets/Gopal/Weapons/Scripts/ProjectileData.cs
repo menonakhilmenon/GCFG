@@ -13,11 +13,21 @@ namespace Gopal
         public int reloadTime;
         public Bullet bullet;
 
-        public override void useWeapon(WeaponUser user)
+        public override void EquipWeapon(WeaponUser user)
         {
-            Debug.Log("Thape Thape Thape");
+            throw new System.NotImplementedException();
+        }
+
+        public override void UnEquipWeapon(WeaponUser user)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void UseWeapon(WeaponUser user)
+        {
             // Create a new bullet at the the instantiate point
-            Instantiate(bullet,user.projectileSpawnPoint.position,user.projectileSpawnPoint.rotation);
+            var obj = Instantiate(bullet,user.spawnPoint.position,user.spawnPoint.rotation);
+            obj.damage = damage;
         }
     }
 }

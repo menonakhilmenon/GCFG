@@ -11,17 +11,26 @@ namespace Gopal
         public int damage;
         public float range;
 
-        public override void useWeapon(WeaponUser user)
+        public override void EquipWeapon(WeaponUser user)
         {
-            Debug.Log("Splish Slash, Your Opinion is Trash");
+            throw new System.NotImplementedException();
+        }
+
+        public override void UnEquipWeapon(WeaponUser user)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void UseWeapon(WeaponUser user)
+        {
 
             // Get all enemies in range of the sword
-            Collider[] hitEnemies = Physics.OverlapSphere(user.meleeSpawnPoint.position,range);
+            Collider[] hitEnemies = Physics.OverlapSphere(user.spawnPoint.position,range);
             
             // Damage each enemy
             foreach(Collider enemy in hitEnemies)
             {
-                enemy.GetComponent<Damageable>()?.takeDamage?.Invoke(damage);
+                enemy.GetComponent<Damageable>()?.OnTakeDamage?.Invoke(damage);
             }
         }
     }

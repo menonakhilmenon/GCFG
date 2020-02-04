@@ -24,40 +24,40 @@ namespace Gopal
         void onCollectItem(PickUp i)
         {
             Debug.Log("XXX");
-            if (inventory.addItem(i.itemType)) {
+            if (inventory.AddItem(i.itemType)) {
                 Destroy(i.gameObject);
             };
-            inventory.printItems();
+            inventory.PrintItems();
         }
 
-        public Dictionary<Item,int> dumpInventory()
+        public Dictionary<Item,int> DumpInventory()
         {
-            var res = inventory.getInventory();
-            inventory.clear();
+            var res = inventory.GetInventory();
+            inventory.Clear();
             return res;
         }
 
-        public Dictionary<Type,int> dumpResources()
+        public Dictionary<Type,int> DumpResources()
         {
             Dictionary<Type, int> returnValues = new Dictionary<Type, int>();
-            int goldCount = inventory.getResourceCount(Type.Gold);
-            int stoneCount = inventory.getResourceCount(Type.Stone);
-            int woodCount = inventory.getResourceCount(Type.Wood);
+            int goldCount = inventory.GetResourceCount(Type.Gold);
+            int stoneCount = inventory.GetResourceCount(Type.Stone);
+            int woodCount = inventory.GetResourceCount(Type.Wood);
 
             returnValues.Add(Type.Gold, goldCount);
             returnValues.Add(Type.Stone, stoneCount);
             returnValues.Add(Type.Wood, woodCount);
 
-            removeResourceSpecific(Type.Gold, goldCount);
-            removeResourceSpecific(Type.Stone, stoneCount);
-            removeResourceSpecific(Type.Wood, woodCount);
+            RemoveResourceSpecific(Type.Gold, goldCount);
+            RemoveResourceSpecific(Type.Stone, stoneCount);
+            RemoveResourceSpecific(Type.Wood, woodCount);
 
             return returnValues;
         }
 
-        public bool removeResourceSpecific(Type resourceType,int resourceCount)
+        public bool RemoveResourceSpecific(Type resourceType,int resourceCount)
         {
-            int availableResourceCount = inventory.getResourceCount(resourceType);
+            int availableResourceCount = inventory.GetResourceCount(resourceType);
             if(availableResourceCount >= resourceCount)
             {
                 foreach (var item in inventory.items.Keys)
