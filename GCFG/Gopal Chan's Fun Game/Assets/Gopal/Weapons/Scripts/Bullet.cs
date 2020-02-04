@@ -6,12 +6,17 @@ namespace Gopal
 {
     public class Bullet : MonoBehaviour
     {
-        public int damage = 5;
-        public float speed = 5f;
+        [SerializeField]
+        private float speed = 5f;
+        public int damage { get; set; }
 
         private void OnTriggerEnter(Collider other)
         {
-            other.GetComponent<Damageable>()?.OnTakeDamage?.Invoke(damage);
+            var target = other.GetComponent<Damageable>();
+            if (target != null)
+            {
+                target.OnTakeDamage?.Invoke(damage);
+            }
             Destroy(gameObject);
         }
         private void Update()

@@ -25,8 +25,6 @@ public class Interactor : MonoBehaviour
     private Interactable lastInteractable = null;
 
 
-    private Vector3 screenCentre = new Vector3(0.5f, 0.5f, 0f);
-
     public void Interact() 
     {
         if(currentInteractable != null) 

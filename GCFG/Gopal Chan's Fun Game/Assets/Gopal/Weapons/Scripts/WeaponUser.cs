@@ -11,6 +11,7 @@ namespace Gopal
         public bool weaponEquipped = true;
         public WeaponData weapon;
         public Action<WeaponData> onEquippedWeapon;
+        private DateTime lastUsage = DateTime.Now;
 
         private void Start()
         {
@@ -23,14 +24,18 @@ namespace Gopal
             weaponEquipped = true;
         }
 
-        private void Update()
+        public void UseWeapon()
         {
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                weapon.useWeapon(this);
-            }
+            lastUsage = DateTime.Now;
+            weapon.UseWeapon(this);
         }
 
+        public bool TryUseWeapon() 
+        {
+            if ((DateTime.Now - lastUsage).TotalSeconds >= weapon.weaponCooldown) 
+                return true;
+            return false;
+        }
     }
 
 }

@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            gunData.useWeapon(user);
+            gunData.UseWeapon(user);
         }
     }
 }

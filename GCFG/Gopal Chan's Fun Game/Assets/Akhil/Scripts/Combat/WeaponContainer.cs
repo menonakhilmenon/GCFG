@@ -19,7 +19,7 @@ public class WeaponContainer : MonoBehaviour
     {
         if((DateTime.Now - lastUsage).TotalSeconds >= weapon.weaponCooldown) 
         {
-            weapon.useWeapon(user);
+            weapon.UseWeapon(user);
             lastUsage = DateTime.Now;
         }
     }

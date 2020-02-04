@@ -11,7 +11,17 @@ namespace Gopal
         public int damage;
         public float range;
 
-        public override void useWeapon(WeaponUser user)
+        public override void EquipWeapon(WeaponUser user)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void UnEquipWeapon(WeaponUser user)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void UseWeapon(WeaponUser user)
         {
 
             // Get all enemies in range of the sword
