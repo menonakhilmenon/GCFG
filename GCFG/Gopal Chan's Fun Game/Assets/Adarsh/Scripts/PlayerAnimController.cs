@@ -22,6 +22,14 @@ public class PlayerAnimController : MonoBehaviour
 		else
 		{
            PlayerAnim.SetBool("isRunning",false);
-		}		   
+		}
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlayerAnim.SetBool("slash",true);
+        }
+        else
+        {
+            PlayerAnim.SetBool("slash", false);
+        }
     }
 }
