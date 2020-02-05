@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8132fef243e9448a428a30bcf51045, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
+  uiSprite: {fileID: 2800000, guid: a151ceff5031aae40aa175f7cf01a039, type: 3}
   dropModel: {fileID: 4937482073099799207, guid: 51a0c4b03447efc4cac5c157816a029b,
     type: 3}
   weight: 3

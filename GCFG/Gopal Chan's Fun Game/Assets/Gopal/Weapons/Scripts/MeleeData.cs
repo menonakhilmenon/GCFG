@@ -8,7 +8,6 @@ namespace Gopal
     public class MeleeData : Weapon
     {
         public GameObject model;
-        public int damage;
         public float range;
 
         public override void EquipWeapon(WeaponUser user)

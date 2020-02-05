@@ -7,21 +7,11 @@ namespace Gopal
     [CreateAssetMenu(menuName ="ProjectileWeapon")]
     public class ProjectileData : Weapon
     {
-        public GameObject model;
-        public int damage;
         public int range;
         public int reloadTime;
         public Bullet bullet;
 
-        public override void EquipWeapon(WeaponUser user)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void UnEquipWeapon(WeaponUser user)
-        {
-            throw new System.NotImplementedException();
-        }
+        public override string UIDescription => $"{base.UIDescription}\nRange : {range}";
 
         public override void UseWeapon(WeaponUser user)
         {
