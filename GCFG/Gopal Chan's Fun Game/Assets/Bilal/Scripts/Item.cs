@@ -24,7 +24,7 @@ namespace bilalAdarsh
         {
             get 
             {
-                return $"Type : {Type}\nWeight : {weight}";
+                return $"Type : {Type}\nWeight : {weight} kg";
             }
         }
 

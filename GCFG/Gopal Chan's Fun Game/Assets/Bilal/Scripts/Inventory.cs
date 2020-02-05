@@ -31,28 +31,29 @@ namespace bilalAdarsh
 
         public bool AddItem(Item a)
         {
-            if (currentWeight + a.weight > maxWeight)
-            {
+            return AddItem(a, 1);
+        }
+        public bool AddItem(Item a,int count)
+        {
+            if (!TryAdd(a,count))
                 return false;
-            }
+
             currentWeight += a.weight;
             if (items.ContainsKey(a))
-                items[a]++;
+                items[a]+=count;
             else
-                items.Add(a, 1);
+                items.Add(a, count);
 
-            if(isLocal)
+            if (isLocal)
                 inventoryChangeEvent?.Invoke();
             return true;
         }
 
+
+
         public bool TryAdd(Item a)
         {
-            if (currentWeight + a.weight > maxWeight)
-            {
-                return false;
-            }
-            return true;
+            return TryAdd(a, 1);
         }
         public bool TryAdd(Item a,int count)
         {

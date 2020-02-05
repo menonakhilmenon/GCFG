@@ -820,6 +820,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81525666c40f4c42afed1b75c4ecc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &147842806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +836,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  HealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &7449449033766533051
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -861,6 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9ac3ce7720bb344b73954b976b7fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryChangeEvent: {fileID: 0}
   currentWeight: 0
   maxWeight: 500
 --- !u!114 &4333060444502335450

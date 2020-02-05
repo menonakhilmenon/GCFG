@@ -13,10 +13,25 @@ namespace GCFG
     }
     public class ItemSelectEventListener : MonoBehaviour, IListener
     {
+        [SerializeField]
+        private ScriptableGameEvent itemSelectEvent = null;
+        [SerializeField]
+        private ItemEvent itemEventCallback = null;
+
+
+        public void OnEnable()
+        {
+            itemSelectEvent?.RegisterListener(this);
+        }
 
         public void OnEventRaised(params object[] parameters)
         {
             var item = parameters[0] as Item;
+            itemEventCallback?.Invoke(item);
+        }
+        private void OnDisable()
+        {
+            itemSelectEvent?.UnRegisterListener(this);
         }
     }
 }

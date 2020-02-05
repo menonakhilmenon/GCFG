@@ -2912,6 +2912,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50026dc9358e6ca49a64380772394a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onRepair:
+    m_PersistentCalls:
+      m_Calls: []
+  repairItems: []
 --- !u!1 &7597544127865186843
 GameObject:
   m_ObjectHideFlags: 0
@@ -46723,15 +46727,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964d051c87369f7459aa17dc8178199d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairable: {fileID: 2182251437621320604}
   damageFactor: 1
   progressionToWin: 100
-  goldWeight: 5
-  goldResource: {fileID: 11400000, guid: f563c1de44d81144abfa9ff5fe02ad6a, type: 2}
-  stoneWeight: 3
-  stoneResource: {fileID: 11400000, guid: 365113fb924dbf74ba296c2ccaea5263, type: 2}
-  woodWeight: 1
-  woodResource: {fileID: 11400000, guid: 307150db1a1fa864bac4632c86d158d0, type: 2}
+  TowerProgressionUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  TowerProgressionComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8090040667885950753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46744,6 +46747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81525666c40f4c42afed1b75c4ecc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &7544067760583569947
 BoxCollider:
   m_ObjectHideFlags: 0
