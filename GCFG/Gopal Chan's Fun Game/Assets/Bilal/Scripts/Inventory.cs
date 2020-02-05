@@ -11,9 +11,14 @@ namespace bilalAdarsh
     [RequireComponent(typeof(PhotonView))]
     public class Inventory : MonoBehaviourPun
     {
+        [SerializeField]
+        private ScriptableGameEvent inventoryChangeEvent = null;
+
         public Dictionary<Item, int> items = new Dictionary<Item, int>();
         public float currentWeight;
         public float maxWeight;
+
+        private bool isLocal => PlayerManager.instance.LocalPlayerInventory == this;
 
         private void Start()
         {
@@ -36,6 +41,8 @@ namespace bilalAdarsh
             else
                 items.Add(a, 1);
 
+            if(isLocal)
+                inventoryChangeEvent?.Invoke();
             return true;
         }
 
@@ -87,6 +94,9 @@ namespace bilalAdarsh
             if(items.ContainsKey(i) && items[i] >= count)
             {
                 items[i] -= count;
+                if (items[i] <= 0)
+                    items.Remove(i);
+                inventoryChangeEvent?.Invoke();
                 return true;
             }
             return false;
@@ -104,6 +114,7 @@ namespace bilalAdarsh
         public void Clear()
         {
             items.Clear();
+            inventoryChangeEvent?.Invoke();
         }
 
 
