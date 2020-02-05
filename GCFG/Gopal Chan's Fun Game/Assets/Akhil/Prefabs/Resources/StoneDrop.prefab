@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: 4937482073099799207, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}
       propertyPath: m_Name
-      value: BaseDrop Variant
+      value: StoneDrop
       objectReference: {fileID: 0}
     - target: {fileID: 4937482073099799213, guid: 51a0c4b03447efc4cac5c157816a029b,
         type: 3}

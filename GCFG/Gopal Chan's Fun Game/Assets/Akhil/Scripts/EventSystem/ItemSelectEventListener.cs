@@ -26,8 +26,15 @@ namespace GCFG
 
         public void OnEventRaised(params object[] parameters)
         {
-            var item = parameters[0] as Item;
-            itemEventCallback?.Invoke(item);
+            if(parameters.Length == 1) 
+            {
+                var item = parameters[0] as Item;
+                itemEventCallback?.Invoke(item);
+            }
+            else 
+            {
+                itemEventCallback?.Invoke(null);
+            }
         }
         private void OnDisable()
         {

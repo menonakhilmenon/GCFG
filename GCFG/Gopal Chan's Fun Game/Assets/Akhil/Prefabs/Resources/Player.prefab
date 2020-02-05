@@ -880,7 +880,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryChangeEvent: {fileID: 11400000, guid: 9ec3e164429c6a54d83ca779d2feaaa6,
     type: 2}
-  currentWeight: 0
   maxWeight: 500
 --- !u!114 &4333060444502335450
 MonoBehaviour:

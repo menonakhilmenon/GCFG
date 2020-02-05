@@ -28,9 +28,9 @@ namespace Gopal
         public Dictionary<Item,int> DumpResources()
         {
             Dictionary<Item, int> returnValues = new Dictionary<Item, int>();
-            int goldCount = inventory.GetResourceCount(gold);
-            int stoneCount = inventory.GetResourceCount(stone);
-            int woodCount = inventory.GetResourceCount(wood);
+            int goldCount = inventory.GetItemCount(gold);
+            int stoneCount = inventory.GetItemCount(stone);
+            int woodCount = inventory.GetItemCount(wood);
 
             returnValues.Add(gold, goldCount);
             returnValues.Add(stone, stoneCount);
@@ -45,7 +45,7 @@ namespace Gopal
 
         public bool RemoveResourceSpecific(Item resourceType,int resourceCount)
         {
-            int availableResourceCount = inventory.GetResourceCount(resourceType);
+            int availableResourceCount = inventory.GetItemCount(resourceType);
             if(availableResourceCount >= resourceCount)
             {
                 foreach (var item in inventory.items.Keys)
@@ -53,7 +53,6 @@ namespace Gopal
                     if(item == resourceType)
                     {
                         inventory.items[item] -= resourceCount;
-                        inventory.currentWeight -= item.weight * resourceCount;
                         return true;
                     }
                 }

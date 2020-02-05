@@ -10,6 +10,10 @@ namespace GCFG
 {
     public class InventoryUIManager : MonoBehaviour
     {
+
+        [SerializeField]
+        private ScriptableGameEvent itemSelectEvent = null;
+
         [BoxGroup("Populating Inventory")]
         [SerializeField]
         private TMP_Text weightText = null;
@@ -47,7 +51,11 @@ namespace GCFG
             weightSlider.value = localInventory.currentWeight;
             foreach (var item in localInventory.GetInventory())
             {
-                GetInventoryItem(item.Key).SetItemData(item.Key, item.Value);
+                GetInventoryItem(item.Key);
+            }
+            foreach (var item in inventoryUIItems)
+            {
+                item.Value.SetItemData(item.Key, localInventory.GetItemCount(item.Key));
             }
         }
         private InventoryUIItem GetInventoryItem(Item item) 
@@ -66,6 +74,7 @@ namespace GCFG
             if (!isActive) 
             {
                 inventoryObject.SetActive(true);
+                ResetSelection();
                 gamePauseEvent?.Invoke();
             }
             else 
@@ -77,6 +86,10 @@ namespace GCFG
         public void TurnInventoryOff() 
         {
             inventoryObject.SetActive(false);
+        }
+        public void ResetSelection() 
+        {
+            itemSelectEvent?.Invoke();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,18 @@ namespace bilalAdarsh
         private ScriptableGameEvent inventoryChangeEvent = null;
 
         public Dictionary<Item, int> items = new Dictionary<Item, int>();
-        public float currentWeight;
+        public float currentWeight => GetCurrentWeight();
+
+        private float GetCurrentWeight()
+        {
+            float weight = 0f;
+            foreach (var item in items)
+            {
+                weight += item.Key.weight * item.Value;
+            }
+            return weight;
+        }
+
         public float maxWeight;
 
         private bool isLocal => PlayerManager.instance.LocalPlayerInventory == this;
@@ -38,7 +50,6 @@ namespace bilalAdarsh
             if (!TryAdd(a,count))
                 return false;
 
-            currentWeight += a.weight;
             if (items.ContainsKey(a))
                 items[a]+=count;
             else
@@ -65,15 +76,10 @@ namespace bilalAdarsh
         }
 
 
-        public int GetResourceCount(Item itemType)
+        public int GetItemCount(Item itemType)
         {
-            foreach(var kvp in items)
-            {
-                if(kvp.Key == itemType)
-                {
-                    return kvp.Value;
-                }
-            }
+            if (items.ContainsKey(itemType))
+                return items[itemType];
             return 0;
         }
 
@@ -97,25 +103,18 @@ namespace bilalAdarsh
                 items[i] -= count;
                 if (items[i] <= 0)
                     items.Remove(i);
-                inventoryChangeEvent?.Invoke();
+                if(isLocal)
+                    inventoryChangeEvent?.Invoke();
                 return true;
             }
             return false;
         }
 
-        public int ReturnItemCount(Item i)
-        {
-            if(items.ContainsKey(i))
-            {
-                return items[i];
-            }
-            return -1;
-        }
-
         public void Clear()
         {
             items.Clear();
-            inventoryChangeEvent?.Invoke();
+            if(isLocal)
+                inventoryChangeEvent?.Invoke();
         }
 
 
