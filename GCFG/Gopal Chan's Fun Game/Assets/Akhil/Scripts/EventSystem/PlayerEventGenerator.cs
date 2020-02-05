@@ -10,18 +10,22 @@ public class PlayerEventGenerator : MonoBehaviour
     public ScriptableGameEvent FreeLookEndEvent = null;
     public ScriptableGameEvent FireEvent = null;
     public ScriptableGameEvent AltFireEvent = null;
-
+    public ScriptableGameEvent InventoryEvent = null;
 
     [SerializeField]
     private KeyCode InteractKey = KeyCode.F;
     [SerializeField]
     private KeyCode FreeLookKey = KeyCode.LeftAlt;
-
+    [SerializeField]
+    private KeyCode InventoryKey = KeyCode.I;
 
     private static bool _fullFreeLook = true;
 
-    public static bool isFreeLooking = false;
-    public bool isFullFreeLook
+
+    public static bool isFreeLooking => isFullFreeLook || _isFreeLooking;
+    private static bool _isFreeLooking = false;
+
+    public static bool isFullFreeLook
     {
         get => _fullFreeLook;
         set
@@ -41,7 +45,7 @@ public class PlayerEventGenerator : MonoBehaviour
         }
     }
 
-
+    public bool FullFreeLook { get => isFullFreeLook; set => isFullFreeLook = value; }
 
     private void Update()
     {
@@ -57,6 +61,12 @@ public class PlayerEventGenerator : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(InventoryKey)) 
+        {
+            InventoryEvent?.Invoke();
+        }
+
+
 
         if (!isFullFreeLook)
         {
@@ -65,7 +75,7 @@ public class PlayerEventGenerator : MonoBehaviour
                 FreeLookBeginEvent?.Invoke();
                 ReleaseCursor();
             }
-            isFreeLooking = Input.GetKey(FreeLookKey);
+            _isFreeLooking = Input.GetKey(FreeLookKey);
 
             if (Input.GetKeyUp(FreeLookKey))
             {

@@ -16,7 +16,10 @@ public class ScriptableGameEvent : ScriptableObject
             item.OnEventRaised(parameters);
         }
     }
-
+    public void InvokeWithoutParams() 
+    {
+        Invoke();
+    }
     public void RegisterListener(IListener listener) 
     {
         if (!listeners.Contains(listener)) 

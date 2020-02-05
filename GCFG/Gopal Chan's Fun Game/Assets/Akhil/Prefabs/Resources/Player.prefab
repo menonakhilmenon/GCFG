@@ -65,7 +65,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5898670450660600055
@@ -822,7 +822,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 147842806}
+        m_MethodName: TakeDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &147842806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,7 +878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9ac3ce7720bb344b73954b976b7fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryChangeEvent: {fileID: 0}
+  inventoryChangeEvent: {fileID: 11400000, guid: 9ec3e164429c6a54d83ca779d2feaaa6,
+    type: 2}
   currentWeight: 0
   maxWeight: 500
 --- !u!114 &4333060444502335450

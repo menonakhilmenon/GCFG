@@ -4,36 +4,45 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using bilalAdarsh;
+using NaughtyAttributes;
 
 namespace GCFG
 {
     public class InventoryUIManager : MonoBehaviour
     {
+        [BoxGroup("Populating Inventory")]
         [SerializeField]
         private TMP_Text weightText = null;
+        [BoxGroup("Populating Inventory")]
         [SerializeField]
         private Slider weightSlider = null;
+        [BoxGroup("Populating Inventory")]
         [SerializeField]
         private GameObject inventoryDisplayRoot = null;
-
+        [BoxGroup("Populating Inventory")]
         [SerializeField]
         private InventoryUIItem inventoryUIItemPrefab = null;
 
-        private Inventory localInventory => PlayerManager.instance.LocalPlayerInventory;
 
+        [BoxGroup("Opening and Closing")]
+        [SerializeField]
+        private ScriptableGameEvent gamePauseEvent = null;
+        [BoxGroup("Opening and Closing")]
+        [SerializeField]
+        private ScriptableGameEvent gameResumeEvent = null;
+        [BoxGroup("Opening and Closing")]
+        [SerializeField]
+        private GameObject inventoryObject = null;
+        private Inventory localInventory => PlayerManager.instance.LocalPlayerInventory;
         private Dictionary<Item, InventoryUIItem> inventoryUIItems = new Dictionary<Item, InventoryUIItem>();
-        
-        
-        private void OnEnable()
-        {
-            weightSlider.minValue = 0f;
-            weightSlider.maxValue = localInventory.maxWeight;
-            SetInventoryData();
-        }
+
+        private bool isActive => inventoryObject.activeSelf;
 
 
         public void SetInventoryData() 
         {
+            weightSlider.minValue = 0f;
+            weightSlider.maxValue = localInventory.maxWeight;
             weightText.text = $"Weight : {localInventory.currentWeight} / {localInventory.maxWeight} kg";
             weightSlider.value = localInventory.currentWeight;
             foreach (var item in localInventory.GetInventory())
@@ -41,8 +50,6 @@ namespace GCFG
                 GetInventoryItem(item.Key).SetItemData(item.Key, item.Value);
             }
         }
-
-
         private InventoryUIItem GetInventoryItem(Item item) 
         {
             InventoryUIItem result = null;
@@ -53,6 +60,23 @@ namespace GCFG
                 return result;
             }
             return inventoryUIItems[item];
+        }
+        public void ToggleInventory() 
+        {
+            if (!isActive) 
+            {
+                inventoryObject.SetActive(true);
+                gamePauseEvent?.Invoke();
+            }
+            else 
+            {
+                inventoryObject.SetActive(false);
+                gameResumeEvent?.Invoke();
+            }
+        }
+        public void TurnInventoryOff() 
+        {
+            inventoryObject.SetActive(false);
         }
     }
 }

@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e8132fef243e9448a428a30bcf51045, type: 3}
-  m_Name: Stone
+  m_Script: {fileID: 11500000, guid: 49c8b83dfa95399418a57f7bdaf85151, type: 3}
+  m_Name: PauseGameplay
   m_EditorClassIdentifier: 
-  uiSprite: {fileID: 2800000, guid: a151ceff5031aae40aa175f7cf01a039, type: 3}
-  dropModel: {fileID: 2022856986231314395, guid: cd0cf480c1c418e458c19d0f555e79a1,
-    type: 3}
-  weight: 3
