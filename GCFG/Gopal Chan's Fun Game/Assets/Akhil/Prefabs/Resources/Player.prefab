@@ -773,9 +773,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db84438ba46723e4f847d05aa53e65a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 90
+  mouseSensitivity: 180
   speed: 5
-  jumpSpeed: 8
+  jumpSpeed: 3
 --- !u!114 &5268634550227767827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,7 +1239,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

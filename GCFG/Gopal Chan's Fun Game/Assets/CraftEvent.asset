@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e8132fef243e9448a428a30bcf51045, type: 3}
-  m_Name: Gold
+  m_Script: {fileID: 11500000, guid: 120d61d58ee1ab742a588fe5bf4560d5, type: 3}
+  m_Name: CraftEvent
   m_EditorClassIdentifier: 
-  uiSprite: {fileID: 2800000, guid: d04fc8721772d85438caae900fde90f8, type: 3}
-  dropModel: {fileID: 3606526468978899557, guid: 0c613c8c3c0b1d041bc416e87b43badf,
-    type: 3}
-  weight: 3

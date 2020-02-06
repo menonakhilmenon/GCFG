@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 7731574042212671886}
   lowerThreshold: 75
-  upperThreshold: 100
+  upperThreshold: 101
 --- !u!1 &1939505400890548227
 GameObject:
   m_ObjectHideFlags: 0
