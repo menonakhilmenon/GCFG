@@ -98,7 +98,7 @@ namespace bilalAdarsh
 
         public bool RemoveItem(Item i,int count)
         {
-            if(items.ContainsKey(i) && items[i] >= count)
+            if(TryRemove(i,count))
             {
                 items[i] -= count;
                 if (items[i] <= 0)
@@ -109,6 +109,41 @@ namespace bilalAdarsh
             }
             return false;
         }
+
+        public bool TryRemove(Item i,int count) 
+        {
+            if (count == 0)
+                return true;
+            if (items.ContainsKey(i) && items[i] >= count)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+        public bool TryRemoveItems(Dictionary<Item,int> items) 
+        {
+            var result = true;
+            foreach (var item in items)
+            {
+                result = result && TryRemove(item.Key, item.Value);
+            }
+            return result;
+        }
+
+        public bool RemoveItems(Dictionary<Item,int> items) 
+        {
+            var result = true;
+
+            foreach (var item in items)
+            {
+                RemoveItem(item.Key, item.Value);
+            }
+
+            return result;
+        }
+
 
         public void Clear()
         {
