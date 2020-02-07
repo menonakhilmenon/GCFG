@@ -2731,7 +2731,6 @@ GameObject:
   - component: {fileID: 4856427181621465727}
   - component: {fileID: 192410021439364952}
   - component: {fileID: 9216747056357580459}
-  - component: {fileID: 2625934500652858122}
   m_Layer: 11
   m_Name: RepairZone
   m_TagString: Untagged
@@ -2781,8 +2780,8 @@ MonoBehaviour:
   OnInteractionStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2625934500652858122}
-        m_MethodName: SetHudText
+      - m_Target: {fileID: 11400000, guid: 8865ab346ac7ea54a95642b1b4c5633b, type: 2}
+        m_MethodName: InvokeWithString
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2809,8 +2808,8 @@ MonoBehaviour:
   OnInteractionEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2625934500652858122}
-        m_MethodName: SetHudText
+      - m_Target: {fileID: 11400000, guid: 8865ab346ac7ea54a95642b1b4c5633b, type: 2}
+        m_MethodName: InvokeWithString
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2820,19 +2819,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2625934500652858122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6786684228893768317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7e101241a703d4482ea7626ca13b49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hudTextEvent: {fileID: 11400000, guid: 8865ab346ac7ea54a95642b1b4c5633b, type: 2}
 --- !u!1 &7597544127865186843
 GameObject:
   m_ObjectHideFlags: 0

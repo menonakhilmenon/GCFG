@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GCFG
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Events/RepairEvent")]
     public class RepairEvent : ScriptableGameEvent
     {
         public void InvokeWithRepairable(Repairable repairable)

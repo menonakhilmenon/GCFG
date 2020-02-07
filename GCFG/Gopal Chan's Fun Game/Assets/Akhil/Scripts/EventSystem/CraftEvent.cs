@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GCFG
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Events/CraftEvent")]
     public class CraftEvent : ScriptableGameEvent
     {
         public void InvokeWithCraftRecipe(CraftRecipe recipe) 

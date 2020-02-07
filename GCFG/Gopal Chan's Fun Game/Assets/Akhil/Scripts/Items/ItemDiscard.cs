@@ -66,24 +66,9 @@ namespace GCFG
 
         public void DiscardItems() 
         {
-            if (localInventory.RemoveItem(discardItem, discardAmount)) 
+            if (localInventory.RemoveItem(discardItem, discardAmount))
             {
-                for (int i = 0; i < discardAmount;)
-                {
-                    int count;
-                    if (i+5 < discardAmount) 
-                    {
-                        count = 5;
-                    }
-                    else 
-                    {
-                        count = discardAmount - i;
-                    }
-                    var spawnLocation = localInventory.transform.position + Random.onUnitSphere * 3f;
-                    spawnLocation.y = 3f;
-                    PickupSpawner.instance.SpawnPickup(discardItem, count, spawnLocation, localInventory.transform.rotation);
-                    i += count;
-                }
+                localInventory.DropItem(discardItem, discardAmount);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using NaughtyAttributes;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,8 +40,6 @@ namespace bilalAdarsh
                 PlayerManager.instance.LocalPlayerInventory = this;
             }
         }
-
-
         public bool AddItem(Item a)
         {
             return AddItem(a, 1);
@@ -83,6 +82,26 @@ namespace bilalAdarsh
             return 0;
         }
 
+        internal void DropItem(Item discardItem, int discardAmount)
+        {
+            for (int i = 0; i < discardAmount;)
+            {
+                int count;
+                if (i + 5 < discardAmount)
+                {
+                    count = 5;
+                }
+                else
+                {
+                    count = discardAmount - i;
+                }
+                var spawnLocation = transform.position + UnityEngine.Random.onUnitSphere * 3f;
+                spawnLocation.y = 3f;
+                PickupSpawner.instance.SpawnPickup(discardItem, count, spawnLocation, transform.rotation);
+                i += count;
+            }
+        }
+
         public Dictionary<Item,int> GetInventory()
         {
             return items;
@@ -98,6 +117,10 @@ namespace bilalAdarsh
 
         public bool RemoveItem(Item i,int count)
         {
+            if(count <= 0) 
+            {
+                return true;
+            }
             if(TryRemove(i,count))
             {
                 items[i] -= count;

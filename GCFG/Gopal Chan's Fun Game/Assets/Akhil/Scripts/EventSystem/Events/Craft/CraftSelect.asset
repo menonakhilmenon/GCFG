@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c8b83dfa95399418a57f7bdaf85151, type: 3}
-  m_Name: ItemSelectEvent
+  m_Script: {fileID: 11500000, guid: 120d61d58ee1ab742a588fe5bf4560d5, type: 3}
+  m_Name: CraftSelect
   m_EditorClassIdentifier: 

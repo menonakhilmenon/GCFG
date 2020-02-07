@@ -8,7 +8,7 @@ public class StringEventListener : MonoBehaviour,IListener
     [SerializeField]
     private ScriptableGameEvent stringEvent = null;
     [SerializeField]
-    private StringEvent stringEventCallback = null;
+    private StringEventCallback stringEventCallback = null;
 
 
     private void OnEnable()
@@ -27,7 +27,7 @@ public class StringEventListener : MonoBehaviour,IListener
 }
 
 [System.Serializable]
-public class StringEvent : UnityEvent<string> 
+public class StringEventCallback : UnityEvent<string> 
 {
 
 }

@@ -13,7 +13,7 @@ namespace GCFG
         [SerializeField]
         private TMPro.TMP_Text countText = null;
         [SerializeField]
-        private ScriptableGameEvent selectItemEvent = null;
+        private ItemEvent selectItemEvent = null;
 
         [SerializeField]
         private UnityEvent onSelectedCallback = null;
@@ -23,7 +23,6 @@ namespace GCFG
 
         private Item item = null;
 
-        private bool selected = false;
 
         public void SelectItem() 
         {
@@ -39,7 +38,7 @@ namespace GCFG
             {
                 onSelectedCallback?.Invoke();
             }
-            if (selected && item != this.item)
+            if (item != this.item)
             {
                 onDeSelectedCallback?.Invoke();
             }

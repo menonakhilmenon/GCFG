@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 886037478657049625}
   - component: {fileID: 6912854577033094828}
   - component: {fileID: 7432901285386430261}
+  - component: {fileID: 3701986636258894515}
   m_Layer: 5
   m_Name: InventoryUIItem
   m_TagString: Untagged
@@ -316,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 886037478159031528}
   countText: {fileID: 886037477577918063}
-  selectItemEvent: {fileID: 11400000, guid: 5d0803ea468612544946bd10f3592055, type: 2}
+  selectItemEvent: {fileID: 11400000, guid: ac5ed6dd3e00586468c8fd030f90e221, type: 2}
   onSelectedCallback:
     m_PersistentCalls:
       m_Calls:
@@ -393,6 +394,33 @@ MonoBehaviour:
       - m_Target: {fileID: 6912854577033094828}
         m_MethodName: SelectItem
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3701986636258894515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886037478657049630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715f80b915a8b9141b3a823d228e1f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSelectEvent: {fileID: 11400000, guid: ac5ed6dd3e00586468c8fd030f90e221, type: 2}
+  itemEventCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6912854577033094828}
+        m_MethodName: ChangeSelection
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace GCFG
 {
     [System.Serializable]
-    public class ItemEvent : UnityEvent<Item> 
+    public class ItemEventCallback : UnityEvent<Item> 
     {
     
     }
@@ -16,7 +16,7 @@ namespace GCFG
         [SerializeField]
         private ScriptableGameEvent itemSelectEvent = null;
         [SerializeField]
-        private ItemEvent itemEventCallback = null;
+        private ItemEventCallback itemEventCallback = null;
 
 
         public void OnEnable()

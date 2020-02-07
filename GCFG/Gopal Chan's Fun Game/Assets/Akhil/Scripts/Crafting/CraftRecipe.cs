@@ -21,8 +21,24 @@ namespace GCFG
     public class CraftRecipe : ScriptableObject
     {
         public Item result = null;
+        public int resultAmount = 1;
         [ReorderableList]
-        public List<CraftRequirement> craftRequirements = null;
+        [SerializeField]
+        private List<CraftRequirement> craftRequirements = new List<CraftRequirement>();
+        public List<CraftRequirement> CraftRequirements => craftRequirements;
 
+
+        public Dictionary<Item, int> GetRequirementsAsDictionary
+        { 
+            get 
+            {
+                var result = new Dictionary<Item, int>();
+                foreach (var item in craftRequirements)
+                {
+                    result.Add(item.item, item.amount);
+                }
+                return result;
+            }
+        }
     }
 }

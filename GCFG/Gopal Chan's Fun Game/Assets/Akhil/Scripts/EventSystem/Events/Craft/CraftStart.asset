@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6215edc4c7a67c478250de31d694939, type: 3}
-  m_Name: CraftRecipe
+  m_Script: {fileID: 11500000, guid: d7c616c7887469644b4c7e36de1e49bc, type: 3}
+  m_Name: CraftStart
   m_EditorClassIdentifier: 
-  result: {fileID: 11400000, guid: 6ba59135cc8b4f64fa9196ba8c7cc8fc, type: 2}
-  craftRequirements: []
