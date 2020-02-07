@@ -12,7 +12,7 @@ namespace GCFG
     {
 
         [SerializeField]
-        private ScriptableGameEvent itemSelectEvent = null;
+        private ItemEvent itemSelectEvent = null;
 
         [BoxGroup("Populating Inventory")]
         [SerializeField]
@@ -60,10 +60,9 @@ namespace GCFG
         }
         private InventoryUIItem GetInventoryItem(Item item) 
         {
-            InventoryUIItem result = null;
             if (!inventoryUIItems.ContainsKey(item))
             {
-                result = Instantiate(inventoryUIItemPrefab, inventoryDisplayRoot.transform);
+                InventoryUIItem result = Instantiate(inventoryUIItemPrefab, inventoryDisplayRoot.transform);
                 inventoryUIItems.Add(item, result);
                 return result;
             }
@@ -89,7 +88,7 @@ namespace GCFG
         }
         public void ResetSelection() 
         {
-            itemSelectEvent?.Invoke();
+            itemSelectEvent?.InvokeWithItem(null);
         }
     }
 }

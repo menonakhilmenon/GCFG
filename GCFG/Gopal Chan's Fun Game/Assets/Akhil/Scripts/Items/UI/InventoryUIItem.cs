@@ -24,6 +24,11 @@ namespace GCFG
         private Item item = null;
 
 
+        private void OnEnable()
+        {
+            onDeSelectedCallback?.Invoke();
+        }
+
         public void SelectItem() 
         {
             if (item != null) 
@@ -34,7 +39,7 @@ namespace GCFG
 
         public void ChangeSelection(Item item) 
         {
-            if(item == this.item) 
+            if(item == this.item)
             {
                 onSelectedCallback?.Invoke();
             }
