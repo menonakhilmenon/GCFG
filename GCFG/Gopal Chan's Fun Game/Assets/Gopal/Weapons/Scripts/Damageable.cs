@@ -33,7 +33,7 @@ namespace Gopal
         [PunRPC]
         private void TakeDamageRPC(float damage) 
         {
-            OnTakeDamage?.Invoke(damage);
+            OnTakeDamage?.Invoke(-damage);
         }
     }
 }

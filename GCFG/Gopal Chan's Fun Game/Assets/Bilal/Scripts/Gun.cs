@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(gunData.weaponObject.gameObject, transform.position, transform.rotation,transform);
+        //Instantiate(gunData.weaponObject.gameObject, transform.position, transform.rotation,transform);
     }
 
     // Update is called once per frame

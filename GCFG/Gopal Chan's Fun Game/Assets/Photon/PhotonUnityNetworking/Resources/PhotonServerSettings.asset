@@ -42,5 +42,6 @@ MonoBehaviour:
   - TakeDamageRequest
   - TakeDamageRPC
   - RepairRPC
+  - DestroyRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

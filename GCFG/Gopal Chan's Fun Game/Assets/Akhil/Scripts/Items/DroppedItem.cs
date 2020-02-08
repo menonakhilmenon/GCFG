@@ -23,8 +23,8 @@ namespace GCFG
         public string GetDisplayText() 
         {
             if(!showCount)
-                return itemType.name;
-            return $"{itemType.name} x{Count}";
+                return itemType.NameText;
+            return $"{itemType.NameText} x{Count}";
         }
 
 
@@ -58,12 +58,9 @@ namespace GCFG
         {
             if(playerID == PhotonNetwork.LocalPlayer.ActorNumber) 
             {
-                for (int i = 0; i < Count; i++)
-                {
-                    PlayerManager.instance.LocalPlayerInventory.AddItem(itemType);
-                }
+                PlayerManager.instance.LocalPlayerInventory.AddItem(itemType, Count);
             }
-            if (PhotonNetwork.IsMasterClient) 
+            if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Destroy(photonView);
             }

@@ -16,7 +16,7 @@ namespace Gopal
         public override void UseWeapon(WeaponUser user)
         {
             // Create a new bullet at the the instantiate point
-            var obj = Instantiate(bullet,user.spawnPoint.position,user.spawnPoint.rotation);
+            var obj = Instantiate(bullet,user.localEquipPoint.position,user.localEquipPoint.rotation);
             obj.damage = damage;
         }
     }
