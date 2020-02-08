@@ -1,4 +1,5 @@
 ﻿using bilalAdarsh;
+using GCFG;
 using Photon.Pun;
 using System;
 using System.Collections;
@@ -14,11 +15,11 @@ namespace Gopal
         [SerializeField]
         private Transform _remoteEquipPoint = null;
         [SerializeField]
-        private Transform _raycastOrigin = null;
+        private Raycaster _raycastOrigin = null;
 
         public Transform localEquipPoint =>_localEquipPoint;
         public Transform remoteEquipPoint => _remoteEquipPoint;
-        public Transform raycastOrigin => _raycastOrigin;
+        public Raycaster raycastOrigin => _raycastOrigin;
         public bool weaponEquipped => currentWeapon!=null;
         public Weapon currentWeapon { get; private set; } = null;
 

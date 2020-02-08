@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using GCFG;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,11 +49,11 @@ namespace Gopal
         public override void UseWeapon(WeaponUser user)
         {
             var usageData = GetWeaponUsageData(user);
-            usageData.raycastOrigin = user.raycastOrigin;
+            usageData.raycaster = user.raycastOrigin.transform;
             if (PhotonNetwork.IsMasterClient) 
             {
                 // Get all enemies in range of the sword
-                Collider[] hitEnemies = Physics.OverlapBox(usageData.raycastOrigin.position, new Vector3(spread, spread, range), usageData.raycastOrigin.rotation);
+                Collider[] hitEnemies = Physics.OverlapBox(usageData.raycaster.position, new Vector3(spread, spread, range), usageData.raycaster.rotation);
                 // Damage each enemy
                 foreach (Collider enemy in hitEnemies)
                 {
@@ -66,7 +67,7 @@ namespace Gopal
     public class MeleeWeaponUsageData : WeaponUsageData
     {
         public Transform equipPoint = null;
-        public Transform raycastOrigin = null;
+        public Transform raycaster = null;
         public MeleeWeaponObject weaponObject = null;
     }
 }

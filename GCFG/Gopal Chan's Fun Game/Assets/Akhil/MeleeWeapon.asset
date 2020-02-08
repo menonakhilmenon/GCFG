@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f95a47de393989342acb9578c094dd99, type: 3}
-  m_Name: Sword
+  m_Name: MeleeWeapon
   m_EditorClassIdentifier: 
-  _uiSprite: {fileID: 2800000, guid: 17a9e413622fb6d4abed1f3b9a2e24ef, type: 3}
-  _dropModel: {fileID: 3939462488191901450, guid: 792471dec82f7874497ed862d8ae72a1,
-    type: 3}
+  _uiSprite: {fileID: 0}
+  _dropModel: {fileID: 0}
   _weight: 1
-  nameText: Sword
+  nameText: Hello
   _weaponCooldown: 0.5
   _damage: 10
   _range: 2
   _spread: 1
-  _weaponEquipPrefab: {fileID: 3992422331607049049, guid: aef0619a05fb2db4795ed409048e4bad,
-    type: 3}
+  _weaponEquipPrefab: {fileID: 0}
