@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PhotonObjects
   m_EditorClassIdentifier: 
   photonObjects:
-  - {fileID: 11400000, guid: 365113fb924dbf74ba296c2ccaea5263, type: 2}
   - {fileID: 11400000, guid: f563c1de44d81144abfa9ff5fe02ad6a, type: 2}
+  - {fileID: 11400000, guid: 365113fb924dbf74ba296c2ccaea5263, type: 2}
   - {fileID: 11400000, guid: 307150db1a1fa864bac4632c86d158d0, type: 2}
   - {fileID: 11400000, guid: 040583cebf6d94146a6b1b264e684c4b, type: 2}
   - {fileID: 11400000, guid: 6ba59135cc8b4f64fa9196ba8c7cc8fc, type: 2}

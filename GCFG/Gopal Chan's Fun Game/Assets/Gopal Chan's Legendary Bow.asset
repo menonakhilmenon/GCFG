@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23355f11eb07f6c478ff7e9653101804, type: 3}
+  m_Name: Gopal Chan's Bow
+  m_EditorClassIdentifier: 
+  _uiSprite: {fileID: 2800000, guid: 2123d59501c658a4fb341778e998a8fb, type: 3}
+  _dropModel: {fileID: 8227721977664542191, guid: 792471dec82f7874497ed862d8ae72a1,
+    type: 3}
+  _weight: 10
+  nameText: Gopal Chan's Bow
+  _weaponCooldown: 0.2
+  _damage: 5
+  range: 5
+  reloadTime: 1
+  bullet: {fileID: -2542452902713242477, guid: a588bc83e5dfe984f880d27a45614e26, type: 3}
