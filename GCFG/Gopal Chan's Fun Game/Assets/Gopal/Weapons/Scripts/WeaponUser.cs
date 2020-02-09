@@ -1,4 +1,6 @@
-﻿using Photon.Pun;
+﻿using bilalAdarsh;
+using GCFG;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,49 +8,55 @@ using UnityEngine;
 
 namespace Gopal
 {
-    public class WeaponUser : MonoBehaviour
+    public class WeaponUser : MonoBehaviourPun
     {
         [SerializeField]
-        private PhotonView photonView = null;
+        private Transform _localEquipPoint = null;
+        [SerializeField]
+        private Transform _remoteEquipPoint = null;
+        [SerializeField]
+        private Raycaster _raycastOrigin = null;
 
-        public Transform spawnPoint;
-        public bool weaponEquipped = true;
-        public Weapon weapon;
-        public Action<Weapon> onEquippedWeapon;
-        private DateTime lastUsage = DateTime.Now;
+        public Transform localEquipPoint =>_localEquipPoint;
+        public Transform remoteEquipPoint => _remoteEquipPoint;
+        public Raycaster raycastOrigin => _raycastOrigin;
+        public bool weaponEquipped => currentWeapon!=null;
+        public Weapon currentWeapon { get; private set; } = null;
 
-
-        private void Start()
-        {
-            onEquippedWeapon += EquipWeapon;
-        }
 
         public void EquipWeapon(Weapon newWeapon)
         {
-            weapon?.UnEquipWeapon(this);
-            weapon = newWeapon;
-            weaponEquipped = true;
+            if (weaponEquipped)
+            {
+                currentWeapon.UnEquipWeapon(this);
+            }
+            currentWeapon = newWeapon;
+            currentWeapon.EquipWeapon(this);
         }
+
+
+
         public void UnEquipWeapon() 
         {
-            weapon.UnEquipWeapon(this);
-            weaponEquipped = false;
-            weapon = null;
+            currentWeapon.UnEquipWeapon(this);
+            currentWeapon = null;
         }
 
 
         public void UseWeapon()
         {
-            lastUsage = DateTime.Now;
-            weapon.UseWeapon(this);
+            currentWeapon.UseWeapon(this);
         }
 
         public bool TryUseWeapon() 
         {
-            if ((DateTime.Now - lastUsage).TotalSeconds >= weapon.weaponCooldown) 
-                return true;
-            return false;
+            if (currentWeapon==null) 
+            {
+                return false;
+            }
+            return currentWeapon.TryUseWeapon(this);
         }
+
     }
 
 }

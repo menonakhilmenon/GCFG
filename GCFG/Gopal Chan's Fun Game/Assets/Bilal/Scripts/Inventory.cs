@@ -1,4 +1,6 @@
-﻿using Photon.Pun;
+﻿using NaughtyAttributes;
+using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,25 @@ namespace bilalAdarsh
     [RequireComponent(typeof(PhotonView))]
     public class Inventory : MonoBehaviourPun
     {
+        [SerializeField]
+        private ScriptableGameEvent inventoryChangeEvent = null;
+
         public Dictionary<Item, int> items = new Dictionary<Item, int>();
-        public float currentWeight;
+        public float currentWeight => GetCurrentWeight();
+
+        private float GetCurrentWeight()
+        {
+            float weight = 0f;
+            foreach (var item in items)
+            {
+                weight += item.Key.weight * item.Value;
+            }
+            return weight;
+        }
+
         public float maxWeight;
+
+        private bool isLocal => PlayerManager.instance.LocalPlayerInventory == this;
 
         private void Start()
         {
@@ -22,30 +40,30 @@ namespace bilalAdarsh
                 PlayerManager.instance.LocalPlayerInventory = this;
             }
         }
-
-
         public bool AddItem(Item a)
         {
-            if (currentWeight + a.weight > maxWeight)
-            {
+            return AddItem(a, 1);
+        }
+        public bool AddItem(Item a,int count)
+        {
+            if (!TryAdd(a,count))
                 return false;
-            }
-            currentWeight += a.weight;
-            if (items.ContainsKey(a))
-                items[a]++;
-            else
-                items.Add(a, 1);
 
+            if (items.ContainsKey(a))
+                items[a]+=count;
+            else
+                items.Add(a, count);
+
+            if (isLocal)
+                inventoryChangeEvent?.Invoke();
             return true;
         }
 
+
+
         public bool TryAdd(Item a)
         {
-            if (currentWeight + a.weight > maxWeight)
-            {
-                return false;
-            }
-            return true;
+            return TryAdd(a, 1);
         }
         public bool TryAdd(Item a,int count)
         {
@@ -57,16 +75,31 @@ namespace bilalAdarsh
         }
 
 
-        public int GetResourceCount(Item itemType)
+        public int GetItemCount(Item itemType)
         {
-            foreach(var kvp in items)
-            {
-                if(kvp.Key == itemType)
-                {
-                    return kvp.Value;
-                }
-            }
+            if (items.ContainsKey(itemType))
+                return items[itemType];
             return 0;
+        }
+
+        internal void DropItem(Item discardItem, int discardAmount)
+        {
+            for (int i = 0; i < discardAmount;)
+            {
+                int count;
+                if (i + 5 < discardAmount)
+                {
+                    count = 5;
+                }
+                else
+                {
+                    count = discardAmount - i;
+                }
+                var spawnLocation = transform.position + UnityEngine.Random.onUnitSphere * 3f;
+                spawnLocation.y = 3f;
+                PickupSpawner.instance.SpawnPickup(discardItem, count, spawnLocation, transform.rotation);
+                i += count;
+            }
         }
 
         public Dictionary<Item,int> GetInventory()
@@ -84,26 +117,62 @@ namespace bilalAdarsh
 
         public bool RemoveItem(Item i,int count)
         {
-            if(items.ContainsKey(i) && items[i] >= count)
+            if(count <= 0) 
+            {
+                return true;
+            }
+            if(TryRemove(i,count))
             {
                 items[i] -= count;
+                if (items[i] <= 0)
+                    items.Remove(i);
+                if(isLocal)
+                    inventoryChangeEvent?.Invoke();
                 return true;
             }
             return false;
         }
 
-        public int ReturnItemCount(Item i)
+        public bool TryRemove(Item i,int count) 
         {
-            if(items.ContainsKey(i))
+            if (count == 0)
+                return true;
+            if (items.ContainsKey(i) && items[i] >= count)
             {
-                return items[i];
+                return true;
             }
-            return -1;
+            return false;
         }
+
+
+        public bool TryRemoveItems(Dictionary<Item,int> items) 
+        {
+            var result = true;
+            foreach (var item in items)
+            {
+                result = result && TryRemove(item.Key, item.Value);
+            }
+            return result;
+        }
+
+        public bool RemoveItems(Dictionary<Item,int> items) 
+        {
+            var result = true;
+
+            foreach (var item in items)
+            {
+                RemoveItem(item.Key, item.Value);
+            }
+
+            return result;
+        }
+
 
         public void Clear()
         {
             items.Clear();
+            if(isLocal)
+                inventoryChangeEvent?.Invoke();
         }
 
 

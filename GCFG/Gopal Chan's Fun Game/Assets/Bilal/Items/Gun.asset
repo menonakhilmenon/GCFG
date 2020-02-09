@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23355f11eb07f6c478ff7e9653101804, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
-  dropModel: {fileID: 4549253047795267139, guid: 85dd44c64c669fd4a94b790bf0a3e207,
-    type: 3}
+  uiSprite: {fileID: 2800000, guid: ca7388e1edaa3584d899b65ecead1e96, type: 3}
+  dropModel: {fileID: 0}
   weight: 5
-  weaponObject: {fileID: 0}
   weaponCooldown: 0.5
-  model: {fileID: 4549253047795267139, guid: 85dd44c64c669fd4a94b790bf0a3e207, type: 3}
   damage: 10
   range: 0
   reloadTime: 0

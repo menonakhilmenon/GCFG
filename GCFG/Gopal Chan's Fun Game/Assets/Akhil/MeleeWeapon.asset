@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95a47de393989342acb9578c094dd99, type: 3}
+  m_Name: MeleeWeapon
+  m_EditorClassIdentifier: 
+  _uiSprite: {fileID: 0}
+  _dropModel: {fileID: 0}
+  _weight: 1
+  nameText: Hello
+  _weaponCooldown: 0.5
+  _damage: 10
+  _range: 2
+  _spread: 1
+  _weaponEquipPrefab: {fileID: 0}

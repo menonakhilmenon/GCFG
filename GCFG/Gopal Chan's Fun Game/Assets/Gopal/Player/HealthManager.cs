@@ -10,7 +10,7 @@ namespace Gopal
     public class HealthManager : MonoBehaviour
     {
         public float health = 100;
-        public Action<float> HealthUpdate;
+        public FloatEvent HealthUpdate;
         public float Health
         {
             get
@@ -29,7 +29,7 @@ namespace Gopal
         private float damageFactor = 1f;
 
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             Health -= damageFactor * damage;
         }

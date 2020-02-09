@@ -6,7 +6,6 @@ namespace Gopal
 {
     public class TowerView : MonoBehaviour
     {
-        public Tower parent;
         public GameObject child;
         [SerializeField]
         private int lowerThreshold = 0;

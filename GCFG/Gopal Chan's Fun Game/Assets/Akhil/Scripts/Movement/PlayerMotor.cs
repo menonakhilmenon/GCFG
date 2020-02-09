@@ -21,7 +21,6 @@ namespace GCFG
         private void OnEnable()
         {
             characterController = GetComponent<CharacterController>();
-            
         }
 
        

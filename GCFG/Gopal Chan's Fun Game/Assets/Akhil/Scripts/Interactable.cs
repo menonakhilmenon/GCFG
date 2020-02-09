@@ -8,33 +8,34 @@ public class Interactable : MonoBehaviour
 {
 
     [SerializeField]
-    private InteractorEvent OnInteractionStart = null;
+    private UnityEvent OnInteractionStart = null;
     [SerializeField]
-    private InteractorEvent OnInteract = null;
+    private UnityEvent OnInteract = null;
     [SerializeField]
-    private InteractorEvent OnInteractionEnd = null;
+    private UnityEvent OnInteractionEnd = null;
 
 
-    public void StartInteraction(Interactor other)
+    public void StartInteraction()
     {
-        if (other != null)
+        OnInteractionStart?.Invoke();
+    }
+    public void EndInteraction()
+    {
+        OnInteractionEnd?.Invoke();
+    }
+
+    public void Interact() 
+    {
+        OnInteract?.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        if(Interactor.localInteractor.currentInteractable == this) 
         {
-            OnInteractionStart?.Invoke(other);
+            EndInteraction();
         }
     }
-    public void EndInteraction(Interactor other)
-    {
-        if (other != null)
-        {
-            OnInteractionEnd?.Invoke(other);
-        }
-    }
-
-    public void Interact(Interactor interactor) 
-    {
-        OnInteract?.Invoke(interactor);
-    }
-
 
 }
 

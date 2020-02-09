@@ -5,6 +5,7 @@ using UnityEngine;
 using Gopal;
 using bilalAdarsh;
 using Photon.Pun;
+using GCFG;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     private Dictionary<Player, PhotonView> playerObjects = null;
 
 
+    public WeaponNetworking WeaponNetworking { get; set; } = null;
     public Inventory LocalPlayerInventory { get; set; } = null;
     public WeaponUser LocalWeaponUser { get; set; } = null;
     public Tower LocalTower { get; set; } = null;

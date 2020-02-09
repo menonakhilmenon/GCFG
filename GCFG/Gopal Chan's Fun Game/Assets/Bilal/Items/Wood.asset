@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8132fef243e9448a428a30bcf51045, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  resourceType: 0
-  weight: 3
-  color: {r: 0.9339623, g: 0.48745087, b: 0.057271298, a: 0}
+  _uiSprite: {fileID: 2800000, guid: 2c558c1f433e49c4881c0ee6483d5fca, type: 3}
+  _dropModel: {fileID: 8232393037367302438, guid: 08849f1cce1dc3f48952a24055cad188,
+    type: 3}
+  _weight: 1

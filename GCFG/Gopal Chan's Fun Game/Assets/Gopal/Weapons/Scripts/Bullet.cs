@@ -8,7 +8,7 @@ namespace Gopal
     {
         [SerializeField]
         private float speed = 5f;
-        public int damage { get; set; }
+        public float damage { get; set; }
 
         private void OnTriggerEnter(Collider other)
         {

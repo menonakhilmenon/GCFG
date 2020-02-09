@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-
+using GCFG;
 namespace Gopal
 {
 
@@ -10,46 +10,26 @@ namespace Gopal
     {
     
     }
+    [RequireComponent(typeof(Health))]
     public class Tower : MonoBehaviour
     {
+        private float ProgressionToWin => health.MaxHealth;
 
-        [SerializeField]
-        private float damageFactor = 1f;
-        [SerializeField]
-        private float progressionToWin = 100f;
-
-        private float _progression = 0;
-
-
-
-
-
-        public FloatEvent TowerProgressionUpdate;
         public UnityEvent TowerProgressionComplete;
+        public float Progression => health.currentHealth;
+        private Health health = null;
 
-        public float Progression
+
+        private void Awake()
         {
-            get { return _progression; }
-            set
-            {
-                if (_progression != value)
-                {
-                    _progression = value;
-                    TowerProgressionUpdate?.Invoke(value);
-                    if(_progression >= progressionToWin) 
-                    {
-                        TowerProgressionComplete?.Invoke();
-                    }
-                }
-            }
+            health = GetComponent<Health>();
         }
-
-
-
-
-        public void TakeDamage(float damage)
+        public void CheckTowerProgression() 
         {
-            Progression -= damageFactor * damage;
+            if (Progression >= ProgressionToWin) 
+            {
+                TowerProgressionComplete?.Invoke();
+            }
         }
     }
 }

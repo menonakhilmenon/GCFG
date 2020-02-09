@@ -21,15 +21,25 @@ public class Interactor : MonoBehaviour
         get => photonView;
     }
 
-    private Interactable currentInteractable = null;
+    public static Interactor localInteractor = null;
+
+    public Interactable currentInteractable { get; private set; } = null;
     private Interactable lastInteractable = null;
 
+
+    private void OnEnable()
+    {
+        if (photonView.IsMine) 
+        {
+            localInteractor = this;
+        }
+    }
 
     public void Interact() 
     {
         if(currentInteractable != null) 
         {
-            currentInteractable?.Interact(this);
+            currentInteractable?.Interact();
         }
     }
     private void Update()
@@ -50,11 +60,11 @@ public class Interactor : MonoBehaviour
         {
             if (lastInteractable != null) 
             {
-                lastInteractable.EndInteraction(this);
+                lastInteractable.EndInteraction();
             }
             if(currentInteractable != null) 
             {
-                currentInteractable.StartInteraction(this);
+                currentInteractable.StartInteraction();
             }
             lastInteractable = currentInteractable;
         }
