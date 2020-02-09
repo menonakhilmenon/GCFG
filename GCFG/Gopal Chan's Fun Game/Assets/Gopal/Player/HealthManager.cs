@@ -27,13 +27,9 @@ namespace Gopal
             }
         }
         private float damageFactor = 1f;
-        private void OnEnable()
-        {
-            GetComponent<Damageable>().OnTakeDamage += takeDamage;
-        }
 
 
-        void takeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             Health -= damageFactor * damage;
         }

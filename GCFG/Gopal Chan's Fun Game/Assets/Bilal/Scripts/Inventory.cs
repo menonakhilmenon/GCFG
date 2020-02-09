@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 namespace bilalAdarsh
 {
+
     [RequireComponent(typeof(PhotonView))]
     public class Inventory : MonoBehaviourPun
     {

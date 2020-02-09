@@ -17,6 +17,7 @@ namespace Gopal
         public Action<Weapon> onEquippedWeapon;
         private DateTime lastUsage = DateTime.Now;
 
+
         private void Start()
         {
             onEquippedWeapon += EquipWeapon;

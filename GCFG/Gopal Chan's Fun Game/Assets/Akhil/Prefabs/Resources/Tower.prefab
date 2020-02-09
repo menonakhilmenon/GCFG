@@ -46790,11 +46790,19 @@ MonoBehaviour:
   damageFactor: 1
   progressionToWin: 100
   goldWeight: 5
+<<<<<<< HEAD
   goldResource: {fileID: 0}
   stoneWeight: 3
   stoneResource: {fileID: 0}
   woodWeight: 1
   woodResource: {fileID: 0}
+=======
+  goldResource: {fileID: 11400000, guid: f563c1de44d81144abfa9ff5fe02ad6a, type: 2}
+  stoneWeight: 3
+  stoneResource: {fileID: 11400000, guid: 365113fb924dbf74ba296c2ccaea5263, type: 2}
+  woodWeight: 1
+  woodResource: {fileID: 11400000, guid: 307150db1a1fa864bac4632c86d158d0, type: 2}
+>>>>>>> 415319d6c1f014816c6b47cac4b0e292a1d6b8da
 --- !u!114 &8090040667885950753
 MonoBehaviour:
   m_ObjectHideFlags: 0

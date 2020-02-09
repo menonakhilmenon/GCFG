@@ -41,21 +41,21 @@ namespace Gopal
         }
 
 
-        void Update()
-        {
-            if (canRepair)
-            {
-                if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F))
-                {
-                    Debug.Log("XXX");
-                    items = gameObject.GetComponent<InventoryManager>()?.DumpResources();
-                    if (zone != null)
-                    {
-                        zone.OnRepair?.Invoke(items);
-                    }
-                }
-            }
-        }
+        //void Update()
+        //{
+        //    if (canRepair)
+        //    {
+        //        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F))
+        //        {
+        //            Debug.Log("XXX");
+        //            items = gameObject.GetComponent<InventoryManager>()?.DumpResources();
+        //            if (zone != null)
+        //            {
+        //                zone.OnRepair?.Invoke(items);
+        //            }
+        //        }
+        //    }
+        //}
     }
 
 }

@@ -14,14 +14,6 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private InteractorEvent OnInteractionEnd = null;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var interactor = other.GetComponent<Interactor>();
-        if (interactor != null)
-        {
-            OnInteractionStart?.Invoke(interactor);
-        }
-    }
 
     public void StartInteraction(Interactor other)
     {

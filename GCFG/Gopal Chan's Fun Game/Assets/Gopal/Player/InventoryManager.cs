@@ -16,26 +16,7 @@ namespace Gopal
         private Resource wood = null;
 
         public Inventory inventory;
-        // Start is called before the first frame update
-        void Start()
-        {
-            gameObject.GetComponent<Collector>().CollectItem += onCollectItem;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        void onCollectItem(PickUp i)
-        {
-            Debug.Log("XXX");
-            if (inventory.AddItem(i.itemType)) {
-                Destroy(i.gameObject);
-            };
-            inventory.PrintItems();
-        }
+      
 
         public Dictionary<Item,int> DumpInventory()
         {

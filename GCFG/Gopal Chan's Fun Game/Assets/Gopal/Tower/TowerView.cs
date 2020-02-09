@@ -13,23 +13,8 @@ namespace Gopal
         [SerializeField]
         private int upperThreshold = 100;
 
-        private void OnEnable()
-        {
-            parent.TowerProgressionUpdate += onProgressionUpdate;
-        }
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        void onProgressionUpdate(float value)
+        public void OnProgressionUpdate(float value)
         {
             Debug.Log("XXX");
             if(value >= lowerThreshold && value < upperThreshold)
