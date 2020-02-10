@@ -22,7 +22,7 @@ namespace Gopal
     public class Repairable : MonoBehaviourPun
     {
         [SerializeField]
-        private FloatEvent onRepair = null;
+        private FloatEventHandler onRepair = null;
 
         [ReorderableList]
         public List<RepairItemReq> repairItems = new List<RepairItemReq>();

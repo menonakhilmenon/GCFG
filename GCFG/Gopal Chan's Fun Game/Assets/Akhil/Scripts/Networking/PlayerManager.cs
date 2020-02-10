@@ -16,10 +16,11 @@ public class PlayerManager : MonoBehaviour
 
 
     public WeaponNetworking WeaponNetworking { get; set; } = null;
-    public Inventory LocalPlayerInventory { get; set; } = null;
-    public WeaponUser LocalWeaponUser { get; set; } = null;
     public Tower LocalTower { get; set; } = null;
-    public PhotonView LocalPlayerView { get; set; } = null;
+    public LocalPlayer LocalPlayerObject { get; set; } = null;
+    public Inventory LocalPlayerInventory => LocalPlayerObject?.inventory;
+    public WeaponUser LocalWeaponUser  => LocalPlayerObject?.weaponUser;
+    public Damageable LocalPlayerDamagable => LocalPlayerObject?.damageable;
 
     private void Awake()
     {

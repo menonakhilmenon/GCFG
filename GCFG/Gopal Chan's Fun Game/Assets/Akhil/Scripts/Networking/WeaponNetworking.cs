@@ -24,7 +24,6 @@ namespace GCFG
             weaponUser = GetComponent<WeaponUser>();
             if (photonView.IsMine) 
             {
-                PlayerManager.instance.LocalWeaponUser = weaponUser;
                 PlayerManager.instance.WeaponNetworking = this;
             }
         }

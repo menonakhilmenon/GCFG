@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e81c0f87560c05448df4494c7044a79, type: 3}
+  m_Name: SimplePot
+  m_EditorClassIdentifier: 
+  _uiSprite: {fileID: 2800000, guid: 77c67f8869bb6aa4497940c67d1117ba, type: 3}
+  _dropModel: {fileID: 7726181263067812801, guid: ca81254f718599548a59499da5aca8af,
+    type: 3}
+  _weight: 1
+  nameText: Potion
+  regenHP: 50
+  regenEvent: {fileID: 11400000, guid: dc1ee35b96191cb429e03ad74dda1551, type: 2}

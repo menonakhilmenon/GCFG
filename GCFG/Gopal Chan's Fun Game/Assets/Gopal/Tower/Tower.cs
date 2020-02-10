@@ -4,12 +4,6 @@ using UnityEngine.Events;
 using GCFG;
 namespace Gopal
 {
-
-    [Serializable]
-    public class FloatEvent : UnityEvent<float> 
-    {
-    
-    }
     [RequireComponent(typeof(Health))]
     public class Tower : MonoBehaviour
     {
