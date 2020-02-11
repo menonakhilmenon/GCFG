@@ -9,7 +9,7 @@ namespace GCFG
     public class Health : MonoBehaviour
     {
         [SerializeField]
-        private float _currentHealth = 0f;
+        private float _currentHealth = 100f;
         [SerializeField]
         private float maxHealth = 100f;
         [SerializeField]

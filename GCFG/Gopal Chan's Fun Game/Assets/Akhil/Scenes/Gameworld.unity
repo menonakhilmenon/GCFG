@@ -7673,7 +7673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd15133f0be70b43bf0bf6a9521b39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayersPerRoom: 1
+  maxPlayersPerRoom: 2
 --- !u!114 &489377040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32034,7 +32034,7 @@ PrefabInstance:
     - target: {fileID: 5611596776200507421, guid: 94428ce2d5ba36d41a89ea6a0445f15e,
         type: 3}
       propertyPath: craftRecipes.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5611596776200507421, guid: 94428ce2d5ba36d41a89ea6a0445f15e,
         type: 3}
@@ -32059,6 +32059,12 @@ PrefabInstance:
       propertyPath: craftRecipes.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 15854a3a842db184fab6361dd1668402,
+        type: 2}
+    - target: {fileID: 5611596776200507421, guid: 94428ce2d5ba36d41a89ea6a0445f15e,
+        type: 3}
+      propertyPath: craftRecipes.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a21bcc8343c5ad4aa0a719c400453c8,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94428ce2d5ba36d41a89ea6a0445f15e, type: 3}

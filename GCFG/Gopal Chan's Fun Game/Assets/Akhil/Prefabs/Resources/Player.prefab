@@ -360,11 +360,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5727638110304621859}
   - component: {fileID: 8843406902042096795}
-  - component: {fileID: 158192056625419912}
   - component: {fileID: 5255846698155286454}
   - component: {fileID: 2357696350115547845}
   m_Layer: 0
-  m_Name: PlayerLogic
+  m_Name: LocalPlayerLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,20 +401,6 @@ MonoBehaviour:
   interactionLayerMask:
     serializedVersion: 2
     m_Bits: 2048
---- !u!136 &158192056625419912
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3913993872270305832}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5255846698155286454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 5268634550227767829}
-  _localDamageable: {fileID: 8605057003809574130}
+  _localDamageable: {fileID: 8965897727417177134}
   _inventory: {fileID: 4385284605548888016}
   _weaponUser: {fileID: 43149564594316096}
 --- !u!1 &5268634550227767836
@@ -478,8 +463,6 @@ GameObject:
   - component: {fileID: 7449449033766533051}
   - component: {fileID: 6815307582369713966}
   - component: {fileID: 97504196176114533}
-  - component: {fileID: 8605057003809574130}
-  - component: {fileID: 7032985826242571980}
   - component: {fileID: 4856455775567239104}
   m_Layer: 0
   m_Name: Player
@@ -504,6 +487,7 @@ Transform:
   - {fileID: 5727638110304621859}
   - {fileID: 8228657788558755582}
   - {fileID: 7108627900813352090}
+  - {fileID: 2017328613267459878}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -723,60 +707,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8605057003809574130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5268634550227767836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f81525666c40f4c42afed1b75c4ecc1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageFactor: 1
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4856455775567239104}
-        m_MethodName: UpdateHealth
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7032985826242571980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5268634550227767836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c50b7f035b7d4d4796062a3b5a40152, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onEventCallback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8605057003809574130}
-        m_MethodName: RecoverHealth
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  floatEvent: {fileID: 11400000, guid: dc1ee35b96191cb429e03ad74dda1551, type: 2}
 --- !u!114 &4856455775567239104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,7 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610f35343f1ae4040ac34b5940cf6a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
+  _currentHealth: 100
   maxHealth: 100
   onHealthUpdate:
     m_PersistentCalls:
@@ -941,6 +871,153 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSetEvent: {fileID: 11400000, guid: 024bfe1c719b8e3409f64aa62fe58e67, type: 2}
   photonView: {fileID: 5268634550227767829}
+--- !u!1 &5798344154461499153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2017328613267459878}
+  - component: {fileID: 1426231909818744914}
+  - component: {fileID: 8965897727417177134}
+  - component: {fileID: 815964623772889832}
+  - component: {fileID: 1989598926351257943}
+  - component: {fileID: 4537632128262987428}
+  m_Layer: 0
+  m_Name: Damageable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2017328613267459878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798344154461499153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5268634550227767825}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426231909818744914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798344154461499153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &8965897727417177134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798344154461499153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81525666c40f4c42afed1b75c4ecc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageFactor: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4856455775567239104}
+        m_MethodName: UpdateHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &815964623772889832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798344154461499153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c50b7f035b7d4d4796062a3b5a40152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEventCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8965897727417177134}
+        m_MethodName: RecoverHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  floatEvent: {fileID: 11400000, guid: dc1ee35b96191cb429e03ad74dda1551, type: 2}
+--- !u!114 &1989598926351257943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798344154461499153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!136 &4537632128262987428
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798344154461499153}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6064691845785658100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,7 +3743,7 @@ Animator:
   m_GameObject: {fileID: 6064691847329725572}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11994ebbc7192644e9f29660bed4c255, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
