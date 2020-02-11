@@ -38,6 +38,10 @@ namespace Gopal
 
         public void UnEquipWeapon() 
         {
+            if(!weaponEquipped) 
+            {
+                return;
+            }
             currentWeapon.UnEquipWeapon(this);
             currentWeapon = null;
         }

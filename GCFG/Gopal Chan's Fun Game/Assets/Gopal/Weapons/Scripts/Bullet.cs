@@ -12,6 +12,9 @@ namespace Gopal
         private float _speed = 5f;
         [SerializeField]
         private float _damage = 5f;
+        [SerializeField]
+        private LayerMask hitLayers = 0;
+
 
         [SerializeField]
         private ScriptableGameEvent playerHitEvent = null;
@@ -29,27 +32,23 @@ namespace Gopal
 
         private void OnTriggerEnter(Collider other)
         {
-            if (PhotonNetwork.IsMasterClient || photonView.IsMine)
+            if (photonView.IsMine)
             {
-                if (photonView.IsMine)
+                playerHitEvent.Invoke();
+                if( hitLayers == (hitLayers | (1<<other.gameObject.layer))) 
                 {
-                    playerHitEvent.Invoke();
-                }
-                if(!PhotonNetwork.IsMasterClient)
-                {
-                    return;
-                }
-                var target = other.GetComponent<Damageable>();
-                if (target != null)
-                {
-                    target.OnTakeDamage?.Invoke(damage);
+                    var target = other.GetComponent<Damageable>();
+                    if (target != null)
+                    {
+                        target.TakeDamage(damage);
+                    }
                 }
                 PhotonNetwork.Destroy(gameObject);
             }
         }
         private void Update()
         {
-            if (PhotonNetwork.IsMasterClient) 
+            if (photonView.IsMine) 
             {
                 transform.position += transform.forward * speed * Time.deltaTime;
                 if((startPoint - transform.position).magnitude > range) 

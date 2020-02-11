@@ -18,6 +18,13 @@ namespace GCFG
         [SerializeField]
         private WeaponUser _weaponUser = null;
 
+        [SerializeField]
+        private FloatEvent healthUpdateEvent = null;
+
+        [SerializeField]
+        private Health _health = null;
+
+        public Health health => _health;
         public Damageable damageable => _localDamageable;
         public Inventory inventory => _inventory;
         public WeaponUser weaponUser => _weaponUser;
@@ -28,10 +35,17 @@ namespace GCFG
             if (!photonView.IsMine) 
             {
                 enabled = false;
-                Destroy(this);
                 return;
             }
             PlayerManager.instance.LocalPlayerObject = this;
+        }
+
+        public void CheckHealth(float healthUpdate) 
+        {
+            if (photonView.IsMine) 
+            {
+                healthUpdateEvent?.InvokeWithFloat(healthUpdate);
+            }
         }
     }
 }

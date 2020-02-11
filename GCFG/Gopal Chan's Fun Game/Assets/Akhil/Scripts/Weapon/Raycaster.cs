@@ -8,19 +8,20 @@ namespace GCFG
     {
         [SerializeField]
         private float raycastLimit = 1000f;
-        public Quaternion GetRotationWithoutRaycast(Transform start,float range) 
+        public Quaternion GetRotationWithoutRaycast(Transform start) 
         {
-            Vector3 forward;
-            if (range <= raycastLimit) 
-            {
-                 forward = transform.position + transform.forward * range - start.position;
-            }
-            else 
-            {
-                forward = transform.forward;
-            }
-            Debug.Log(forward.ToString());
-            return Quaternion.LookRotation(forward, transform.up);
+            //Vector3 forward;
+            //if (range <= raycastLimit) 
+            //{
+            //     forward = transform.position + transform.forward * range - start.position;
+            //}
+            //else 
+            //{
+            //    forward = transform.forward;
+            //}
+            //Debug.Log(forward.ToString());
+            //return Quaternion.LookRotation(forward, transform.up);
+            return Quaternion.LookRotation(start.forward,start.up);
         }
         public bool Raycast(float range,out RaycastHit hit,LayerMask layerMask) 
         {

@@ -142,6 +142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   _damage: 5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 12087
   playerHitEvent: {fileID: 11400000, guid: 1ce8a42ab2487e147bf61c439e45809b, type: 2}
 --- !u!54 &2742483509121410597
 Rigidbody:

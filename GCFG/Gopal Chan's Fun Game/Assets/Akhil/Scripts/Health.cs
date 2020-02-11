@@ -15,6 +15,8 @@ namespace GCFG
         [SerializeField]
         private FloatEventHandler onHealthUpdate = null;
 
+
+
         public float MaxHealth => maxHealth;
         public float currentHealth 
         { 

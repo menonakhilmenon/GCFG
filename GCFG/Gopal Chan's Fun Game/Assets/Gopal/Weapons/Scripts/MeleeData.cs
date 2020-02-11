@@ -10,6 +10,8 @@ namespace Gopal
     public class MeleeData : Weapon<MeleeWeaponUsageData>
     {
         [SerializeField]
+        private LayerMask hitLayerMask = 0;
+        [SerializeField]
         private float _range = 2f;
         public float range => _range;
         [SerializeField]
@@ -17,6 +19,9 @@ namespace Gopal
         public float spread =>_spread;
         [SerializeField]
         private MeleeWeaponObject _weaponEquipPrefab = null;
+
+        [SerializeField]
+        private ScriptableGameEvent attackHitEvent = null;
 
         private MeleeWeaponObject weaponEquipPrefab => _weaponEquipPrefab;
 
@@ -50,15 +55,21 @@ namespace Gopal
         {
             var usageData = GetWeaponUsageData(user);
             usageData.raycaster = user.raycastOrigin.transform;
-            if (PhotonNetwork.IsMasterClient) 
+            if (user.photonView.IsMine) 
             {
                 // Get all enemies in range of the sword
-                Collider[] hitEnemies = Physics.OverlapBox(usageData.raycaster.position, new Vector3(spread, spread, range), usageData.raycaster.rotation);
+                Collider[] hitEnemies = Physics.OverlapBox(usageData.raycaster.position, new Vector3(spread, spread, range), usageData.raycaster.rotation, hitLayerMask);
                 // Damage each enemy
                 foreach (Collider enemy in hitEnemies)
                 {
-                    enemy.GetComponent<Damageable>()?.TakeDamage(damage);
+                    var target = enemy.GetComponent<Damageable>();
+                    if (target != null) 
+                    {
+                        attackHitEvent?.Invoke();
+                        target.TakeDamage(damage);
+                    }
                 }
+
             }
             usageData.weaponObject.UseWeapon();
         }

@@ -46598,6 +46598,7 @@ GameObject:
   - component: {fileID: 9179845127053568659}
   - component: {fileID: 7433782328601148469}
   - component: {fileID: 4479244080330687512}
+  - component: {fileID: 3022778238450662786}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -46840,6 +46841,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deleteIfNotMine:
   - {fileID: 6786684228893768317}
+--- !u!114 &3022778238450662786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8030872562638846105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2133db551463e5f4e86a951dbc1df3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 4409598791575429317}
+  renameRecursively: 0
+  localLayerName: LocalPlayer
+  remoteLayerName: RemotePlayer
 --- !u!1 &8327703270538085268
 GameObject:
   m_ObjectHideFlags: 0

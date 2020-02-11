@@ -25,6 +25,8 @@ public class PlayerEventGenerator : MonoBehaviour
     public static bool isFreeLooking => isFullFreeLook || _isFreeLooking;
     private static bool _isFreeLooking = false;
 
+    public bool isPlaying { get; set; } = false;
+
     public static bool isFullFreeLook
     {
         get => _fullFreeLook;
@@ -49,6 +51,8 @@ public class PlayerEventGenerator : MonoBehaviour
 
     private void Update()
     {
+        if (!isPlaying)
+            return;
         if (Input.GetMouseButtonDown(0) && !isFreeLooking)
         {
             if (!Input.GetMouseButton(1))

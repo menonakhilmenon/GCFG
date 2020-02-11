@@ -19,6 +19,9 @@ MonoBehaviour:
   nameText: HeavySword
   _weaponCooldown: 1
   _damage: 50
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 12087
   _range: 4
   _spread: 3
   _weaponEquipPrefab: {fileID: 3992422331607049049, guid: aef0619a05fb2db4795ed409048e4bad,

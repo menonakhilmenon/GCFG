@@ -55,7 +55,7 @@ namespace Gopal
             {
                 var obj = PhotonNetwork.Instantiate(bullet.name,
                     data.weaponObject.BulletSpawnPoint.position,
-                    data.raycaster.GetRotationWithoutRaycast(data.weaponObject.BulletSpawnPoint, range));
+                    data.raycaster.GetRotationWithoutRaycast(data.weaponObject.BulletSpawnPoint));
                 obj.GetComponent<Bullet>().SetBulletData(damage, range);
             }
         }

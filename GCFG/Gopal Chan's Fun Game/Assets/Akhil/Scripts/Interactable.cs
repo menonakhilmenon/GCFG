@@ -31,6 +31,11 @@ public class Interactable : MonoBehaviour
 
     private void OnDisable()
     {
+        if(Interactor.localInteractor == null) 
+        {
+            return;
+        }
+
         if(Interactor.localInteractor.currentInteractable == this) 
         {
             EndInteraction();
