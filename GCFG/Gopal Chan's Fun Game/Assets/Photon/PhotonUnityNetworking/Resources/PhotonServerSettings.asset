@@ -28,19 +28,6 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList:
-  - ClickRpc
-  - DestroyRpc
-  - EquipWeaponRPC
-  - ItemPickUpRPC
-  - RegisterTower
-  - RepairRPC
-  - SpawnPickupRPC
-  - SpawnRPC
-  - TakeDamageRequest
-  - TakeDamageRPC
-  - UnEquipWeaponRPC
-  - UseWeaponRPC
-  - SetBulletDataRPC
-  DisableAutoOpenWizard: 1
+  RpcList: []
+  DisableAutoOpenWizard: 0
   ShowSettings: 0
