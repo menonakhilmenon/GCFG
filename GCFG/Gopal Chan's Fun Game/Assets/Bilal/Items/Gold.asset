@@ -16,3 +16,4 @@ MonoBehaviour:
   _dropModel: {fileID: 8541500547448893674, guid: 0c613c8c3c0b1d041bc416e87b43badf,
     type: 3}
   _weight: 1
+  nameText: Gold

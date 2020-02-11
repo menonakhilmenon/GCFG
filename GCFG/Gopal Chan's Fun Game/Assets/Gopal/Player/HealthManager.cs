@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GCFG;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Gopal
     public class HealthManager : MonoBehaviour
     {
         public float health = 100;
-        public FloatEvent HealthUpdate;
+        public FloatEventHandler HealthUpdate;
         public float Health
         {
             get

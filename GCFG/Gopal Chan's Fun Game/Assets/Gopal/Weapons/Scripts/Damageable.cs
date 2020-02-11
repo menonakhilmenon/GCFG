@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using GCFG;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,16 +8,16 @@ using UnityEngine.Events;
 
 namespace Gopal
 {
-    [Serializable]
-    public class DamageEvent : UnityEvent<float> 
-    {
-        
-    }
-
+    
     [RequireComponent(typeof(PhotonView))]
     public class Damageable : MonoBehaviourPun
     {
-        public DamageEvent OnTakeDamage = null;
+        [SerializeField]
+        private float _damageFactor = 1f;
+
+        public float damageFactor { get => _damageFactor; set => _damageFactor = value; }
+
+        public FloatEventHandler OnTakeDamage = null;
 
         public void TakeDamage(float damage) 
         {
@@ -33,7 +34,17 @@ namespace Gopal
         [PunRPC]
         private void TakeDamageRPC(float damage) 
         {
+            if(damage > 0f) 
+            {
+                damage *= damageFactor;
+            }
+
             OnTakeDamage?.Invoke(-damage);
+        }
+
+        public void RecoverHealth(float health) 
+        {
+            TakeDamage(-health);
         }
     }
 }

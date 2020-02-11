@@ -9,9 +9,7 @@ using UnityEngine;
 
 namespace bilalAdarsh
 {
-
-    [RequireComponent(typeof(PhotonView))]
-    public class Inventory : MonoBehaviourPun
+    public class Inventory : MonoBehaviour
     {
         [SerializeField]
         private ScriptableGameEvent inventoryChangeEvent = null;
@@ -33,13 +31,7 @@ namespace bilalAdarsh
 
         private bool isLocal => PlayerManager.instance.LocalPlayerInventory == this;
 
-        private void Start()
-        {
-            if (photonView.IsMine) 
-            {
-                PlayerManager.instance.LocalPlayerInventory = this;
-            }
-        }
+
         public bool AddItem(Item a)
         {
             return AddItem(a, 1);
@@ -82,7 +74,7 @@ namespace bilalAdarsh
             return 0;
         }
 
-        internal void DropItem(Item discardItem, int discardAmount)
+        public void DropItem(Item discardItem, int discardAmount)
         {
             for (int i = 0; i < discardAmount;)
             {

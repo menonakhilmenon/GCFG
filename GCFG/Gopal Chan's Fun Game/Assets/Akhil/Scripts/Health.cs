@@ -13,7 +13,7 @@ namespace GCFG
         [SerializeField]
         private float maxHealth = 100f;
         [SerializeField]
-        private FloatEvent onHealthUpdate = null;
+        private FloatEventHandler onHealthUpdate = null;
 
         public float MaxHealth => maxHealth;
         public float currentHealth 
