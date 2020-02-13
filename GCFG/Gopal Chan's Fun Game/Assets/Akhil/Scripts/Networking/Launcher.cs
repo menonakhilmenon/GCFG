@@ -136,7 +136,7 @@ namespace GCFG
         public override void OnDisconnected(DisconnectCause cause)
         {
             NetworkLogger.Log("Disconnected due to cause " + cause);
-            Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
+            Debug.LogWarning($"PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {cause}");
         }
 
 

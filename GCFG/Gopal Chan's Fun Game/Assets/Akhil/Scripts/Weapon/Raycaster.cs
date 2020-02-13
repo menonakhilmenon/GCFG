@@ -6,8 +6,6 @@ namespace GCFG
 {
     public class Raycaster : MonoBehaviour
     {
-        [SerializeField]
-        private float raycastLimit = 1000f;
         public Quaternion GetRotationWithoutRaycast(Transform start) 
         {
             //Vector3 forward;

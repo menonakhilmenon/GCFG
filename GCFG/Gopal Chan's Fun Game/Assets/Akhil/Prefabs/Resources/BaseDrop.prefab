@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 4078147623463781466}
   - component: {fileID: 7960250370049355853}
   - component: {fileID: 3930733057889785117}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BaseDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

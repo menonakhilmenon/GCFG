@@ -19,8 +19,8 @@ TagManager:
   - Interactable
   - LocalPlayer
   - RemotePlayer
-  - 
-  - 
+  - EnvironmentCollisionOnly
+  - Environment
   - 
   - 
   - 

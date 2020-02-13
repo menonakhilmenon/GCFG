@@ -14,7 +14,7 @@ namespace bilalAdarsh
         [SerializeField]
         private ScriptableGameEvent inventoryChangeEvent = null;
 
-        public Dictionary<Item, int> items = new Dictionary<Item, int>();
+        private Dictionary<Item, int> items = new Dictionary<Item, int>();
         public float currentWeight => GetCurrentWeight();
 
         private float GetCurrentWeight()
@@ -89,7 +89,7 @@ namespace bilalAdarsh
                 }
                 var spawnLocation = transform.position + UnityEngine.Random.onUnitSphere * 3f;
                 spawnLocation.y = 3f;
-                PickupSpawner.instance.SpawnPickup(discardItem, count, spawnLocation, transform.rotation);
+                PickupSpawner.SpawnPickup(discardItem, count, spawnLocation, transform.rotation);
                 i += count;
             }
         }
@@ -153,7 +153,7 @@ namespace bilalAdarsh
 
             foreach (var item in items)
             {
-                RemoveItem(item.Key, item.Value);
+                result = result && RemoveItem(item.Key, item.Value);
             }
 
             return result;
@@ -166,7 +166,14 @@ namespace bilalAdarsh
             if(isLocal)
                 inventoryChangeEvent?.Invoke();
         }
-
+        public void DropAll() 
+        {
+            foreach (var item in items)
+            {
+                DropItem(item.Key, item.Value);
+            }
+            Clear();
+        }
 
     }
 }

@@ -12,32 +12,29 @@ namespace GCFG
         private GameObject playerGameObject = null;
         [SerializeField]
         private GameObject towerGameObject = null;
-
+        [SerializeField]
+        private GameObject craftTablePrefab = null;
 
         [SerializeField]
         private Transform[] playerSpawnPoints = null;
         [SerializeField]
         private Transform[] towerSpawnPoints = null;
+        [SerializeField]
+        private Transform[] craftTableSpawnPoints = null;
+
 
 
         public void SpawnPlayer()
-        {
-            if (!PhotonNetwork.IsMasterClient)
-                return;
-            GetComponent<PhotonView>().RPC(nameof(SpawnRPC), RpcTarget.AllBuffered);
-        }
-
-        [PunRPC]
-        private void SpawnRPC()
         {
             var player = PhotonNetwork.LocalPlayer;
             var index = player.ActorNumber % playerSpawnPoints.Length;
             var playerPos = playerSpawnPoints[index];
             var towerPos = towerSpawnPoints[index];
-
+            var craftTablePos = craftTableSpawnPoints[index];
 
             PhotonNetwork.Instantiate(playerGameObject.name, playerPos.position, playerPos.rotation);
             PhotonNetwork.Instantiate(towerGameObject.name, towerPos.position, towerPos.rotation);
+            PhotonNetwork.Instantiate(craftTablePrefab.name, craftTablePos.position, craftTablePos.rotation);
         }
     }
 }

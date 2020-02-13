@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5611596775167890400}
   - component: {fileID: 5611596775167890403}
+  - component: {fileID: -623870755379139475}
   m_Layer: 0
   m_Name: CraftTable
   m_TagString: Untagged
@@ -47,6 +48,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-623870755379139475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611596775167890404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5611596775357448425
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,4 +294,6 @@ MonoBehaviour:
   craftRecipes:
   - {fileID: 11400000, guid: 15854a3a842db184fab6361dd1668402, type: 2}
   - {fileID: 11400000, guid: 8b938727c75e8b64f977c9a81f574a7d, type: 2}
-  - {fileID: 11400000, guid: 8b938727c75e8b64f977c9a81f574a7d, type: 2}
+  - {fileID: 11400000, guid: 7fe1b4b47eb12694ebfb9e570f48877e, type: 2}
+  - {fileID: 11400000, guid: 6a21bcc8343c5ad4aa0a719c400453c8, type: 2}
+  - {fileID: 11400000, guid: 44ed1770a400d1f44b773124c1a0f8f0, type: 2}

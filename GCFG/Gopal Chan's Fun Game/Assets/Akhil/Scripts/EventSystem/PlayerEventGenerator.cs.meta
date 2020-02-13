@@ -3,7 +3,14 @@ guid: a52f01dda8711b04e993ae5d936770a2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - InteractEvent: {fileID: 11400000, guid: 82e9f8b2c3c088d4488cdb16b9b532ab, type: 2}
+  - FreeLookBeginEvent: {fileID: 11400000, guid: a6cc788fe1a1cb0438d906b0167de724,
+      type: 2}
+  - FreeLookEndEvent: {fileID: 11400000, guid: 553450ad9f5af364184aaa0f49af846d, type: 2}
+  - FireEvent: {fileID: 11400000, guid: bd289dd60da644d4a904e9a5559b442f, type: 2}
+  - AltFireEvent: {fileID: 11400000, guid: ecff97a275e319d40b2ce4ba06678fb3, type: 2}
+  - InventoryEvent: {fileID: 11400000, guid: d32fc5623ae05fe40a248cd3875a1745, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

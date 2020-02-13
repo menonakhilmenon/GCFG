@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GCFG;
 namespace bilalAdarsh
-{ 
+{
     public class Item : ScriptableObject
     {
         [Tooltip("The sprite used for UI")]
@@ -16,7 +16,13 @@ namespace bilalAdarsh
         [Tooltip("The model of the gameobject when the item is dropped")]
         [SerializeField]
         private DroppedItem _dropModel = null;
-        public DroppedItem dropModel =>_dropModel;
+        public DroppedItem dropModel
+        {
+            get 
+            {
+                return _dropModel;
+            }
+        }
 
         [Tooltip("The weight of the item when carrying around in inventory")]
         [SerializeField]

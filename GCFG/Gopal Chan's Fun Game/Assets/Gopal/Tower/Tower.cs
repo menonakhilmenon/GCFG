@@ -11,6 +11,7 @@ namespace Gopal
 
         public UnityEvent TowerProgressionComplete;
         public float Progression => health.currentHealth;
+        public float MaxProgression => health.MaxHealth;
         private Health health = null;
 
 

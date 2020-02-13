@@ -68,6 +68,7 @@ namespace GCFG
         [PunRPC]
         private void UnEquipWeaponRPC() 
         {
+            Debug.Log(weaponUser.photonView.Owner.NickName);
             weaponUser.UnEquipWeapon();
         }
         [PunRPC]

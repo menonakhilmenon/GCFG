@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gopal Chan's Legendary Bow
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 2800000, guid: 2123d59501c658a4fb341778e998a8fb, type: 3}
-  _dropModel: {fileID: 8227721977664542191, guid: 792471dec82f7874497ed862d8ae72a1,
+  _dropModel: {fileID: 3369606631130115029, guid: e94474ec15e78e048ada435fc0c08861,
     type: 3}
   _weight: 10
   nameText: Gopal Chan's Bow

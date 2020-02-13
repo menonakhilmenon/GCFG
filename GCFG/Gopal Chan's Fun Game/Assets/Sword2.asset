@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sword2
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 2800000, guid: 77c67f8869bb6aa4497940c67d1117ba, type: 3}
-  _dropModel: {fileID: 3939462488191901450, guid: 792471dec82f7874497ed862d8ae72a1,
+  _dropModel: {fileID: 7211405333461305132, guid: 2ec3fe782dc53374683e3130029394cc,
     type: 3}
   _weight: 2
-  nameText: HeavySword
+  nameText: Sword2
   _weaponCooldown: 1
   _damage: 50
   hitLayerMask:
@@ -26,3 +26,4 @@ MonoBehaviour:
   _spread: 3
   _weaponEquipPrefab: {fileID: 3992422331607049049, guid: aef0619a05fb2db4795ed409048e4bad,
     type: 3}
+  attackHitEvent: {fileID: 11400000, guid: 1ce8a42ab2487e147bf61c439e45809b, type: 2}

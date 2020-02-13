@@ -35,8 +35,8 @@ namespace GCFG
         public void SetDiscardSlider() 
         {
             discardAmountSlider.minValue = 0;
-            discardAmountSlider.value = 0;
             discardAmountSlider.maxValue = localInventory.GetItemCount(discardItem);
+            discardAmountSlider.value = 0;
         }
 
         public void SelectItem(Item item) 

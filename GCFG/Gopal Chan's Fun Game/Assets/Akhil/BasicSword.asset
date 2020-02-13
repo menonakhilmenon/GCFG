@@ -26,3 +26,4 @@ MonoBehaviour:
   _spread: 1
   _weaponEquipPrefab: {fileID: 3992422331607049049, guid: aef0619a05fb2db4795ed409048e4bad,
     type: 3}
+  attackHitEvent: {fileID: 11400000, guid: 1ce8a42ab2487e147bf61c439e45809b, type: 2}
